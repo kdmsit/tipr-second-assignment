@@ -50,43 +50,42 @@ if __name__ == '__main__':
     #learning_rate_list = [0.01,0.03,0.05,0.07,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
     learning_rate=0.03
     epoclist=[1000,2000,3000,4000,5000,6000,7000,8000,9000]
-    epoc = 100
+
     batchsize = 1000
-    print("Epoc :", epoc)
-    f.write("Epoc :" + str(epoc))
-    f.write("\n")
-    print("Learning Rate :",learning_rate)
-    f.write("Learning Rate :"+str(learning_rate))
-    f.write("\n")
-    model = nn.initialize_parameters(traindata[0], 100, 10)
-    for epocin in range(epoc):
-        print(epocin)
-        # region Batch Run
-        batchstartIndex=0
-        batchendIndex=batchstartIndex+batchsize
-        while(batchendIndex <= len(traindata)):
-            #print(k,"th Batch Started")
-            batchImagePixels=[]
-            batchImageLabels = []
-            batchImagePixels=[traindata[i] for i in range(batchstartIndex,batchendIndex)]
-            batchImageLabels = [trainlabel[i] for i in range(batchstartIndex, batchendIndex)]
-            X = np.asarray(batchImagePixels, dtype=None, order=None)
-            y = []
-            for i in range(len(batchImageLabels)):
-                labellist = [0 for i in range(10)]
-                labellist[int(batchImageLabels[i])] = 1
-                y.append(labellist)
-            Y = np.asarray(y, dtype=None, order=None)
-            model = nn.train(model, X, Y, epoc, learning_rate)
-            batchstartIndex=batchendIndex
+    for epoc in epoclist:
+        print("Epoc :", epoc)
+        f.write("Epoc :" + str(epoc))
+        f.write("\n")
+        print("Learning Rate :",learning_rate)
+        f.write("Learning Rate :"+str(learning_rate))
+        f.write("\n")
+        model = nn.initialize_parameters(traindata[0], 100, 10)
+        for epocin in range(epoc):
+            print(epocin)
+            # region Batch Run
+            batchstartIndex=0
             batchendIndex=batchstartIndex+batchsize
-        # endregion
-
-
-    X_test = np.asarray(testdata, dtype=None, order=None)
-    accuracy=nn.predict(X_test,testlabel,model)
-    print("Test Accuracy ",accuracy*100)
-    f.write("Test Accuracy "+str(accuracy*100))
-    f.write("\n")
-    f.close()
+            while(batchendIndex <= len(traindata)):
+                #print(k,"th Batch Started")
+                batchImagePixels=[]
+                batchImageLabels = []
+                batchImagePixels=[traindata[i] for i in range(batchstartIndex,batchendIndex)]
+                batchImageLabels = [trainlabel[i] for i in range(batchstartIndex, batchendIndex)]
+                X = np.asarray(batchImagePixels, dtype=None, order=None)
+                y = []
+                for i in range(len(batchImageLabels)):
+                    labellist = [0 for i in range(10)]
+                    labellist[int(batchImageLabels[i])] = 1
+                    y.append(labellist)
+                Y = np.asarray(y, dtype=None, order=None)
+                model = nn.train(model, X, Y, epoc, learning_rate)
+                batchstartIndex=batchendIndex
+                batchendIndex=batchstartIndex+batchsize
+            # endregion
+        X_test = np.asarray(testdata, dtype=None, order=None)
+        accuracy=nn.predict(X_test,testlabel,model)
+        print("Test Accuracy ",accuracy*100)
+        f.write("Test Accuracy "+str(accuracy*100))
+        f.write("\n")
+        f.close()
 
