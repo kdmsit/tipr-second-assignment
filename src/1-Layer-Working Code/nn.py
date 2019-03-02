@@ -18,38 +18,26 @@ def tanh(x):
 def tanh_derivative(x):
     return (1 + tanh(x))*(1 - tanh(x))
 
-def relu(z):
-    return np.maximum(z, 0)
-
-
-def relu_derivative(z):
-    return 1. * (z > 0)
-
-def initialize_parameters(X,h1,h2,out):
+def initialize_parameters(X,h,out):
     model = {}
     input_dim = len(X[0])
-    model['weights1'] = np.random.rand(input_dim, h1)
-    model['weights2'] = np.random.rand(h1, h2)
-    model['weights3'] = np.random.rand(h2,out)
+    model['weights1'] = np.random.rand(input_dim, h)
+    model['weights2'] = np.random.rand(h,out)
     return model
 
 def forward_prop(X,model):
-    weights1, weights2,weights3 = model['weights1'], model['weights2'],model['weights3']
+    weights1, weights2 = model['weights1'], model['weights2']
     layer1 = sigmoid(np.dot(X, weights1))
-    layer2 = sigmoid(np.dot(layer1, weights2))
-    output = sigmoid(np.dot(layer2, weights3))
+    output = sigmoid(np.dot(layer1, weights2))
     model['output'] = output
-    return output,layer2,layer1, model
+    return output,layer1, model
 
-def back_prop(X,Y,model,layer1,layer2,learning_rate):
-    weights1, weights2,weights3,output = model['weights1'], model['weights2'],model['weights3'], model['output']
-    delta4 = 2 * (Y - output) * sigmoid_derivative(output)
-    d_weights3 = np.dot(layer2.T, delta4)
-    delta3 = np.dot(delta4, weights3.T) * sigmoid_derivative(layer2)
+def back_prop(X,Y,model,layer1,learning_rate):
+    weights1, weights2, output = model['weights1'], model['weights2'], model['output']
+    delta3 = 2 * (Y - output) * sigmoid_derivative(output)
     d_weights2 = np.dot(layer1.T, delta3)
     delta2 = np.dot(delta3, weights2.T) * sigmoid_derivative(layer1)
     d_weights1 = np.dot(X.T, delta2)
-    model['weights3'] += learning_rate * d_weights3
     model['weights1'] += learning_rate * d_weights1
     model['weights2'] += learning_rate * d_weights2
     return model
@@ -57,8 +45,11 @@ def back_prop(X,Y,model,layer1,layer2,learning_rate):
 #def compute_cost(model,X,y,reg_lambda):
 
 def train(model, X, Y,learning_rate):
-    output,layer2,layer1, model = forward_prop(X, model)
-    model = back_prop(X,Y,model,layer1,layer2,learning_rate)
+    #for i in range(epoc):
+    #layer1, output, model = forward_prop(X, model)
+    #model=back_prop(X, Y, model, layer1, learning_rate)
+    output, layer1, model = forward_prop(X, model)
+    model = back_prop(X,Y,model,layer1,learning_rate)
     return model
 
 def predict(X,Y,model):
