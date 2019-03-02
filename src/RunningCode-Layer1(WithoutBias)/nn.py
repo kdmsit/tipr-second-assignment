@@ -30,7 +30,7 @@ def forward_prop(X,model):
     layer1 = sigmoid(np.dot(X, weights1))
     output = sigmoid(np.dot(layer1, weights2))
     model['output'] = output
-    return output,layer1, model
+    return layer1, output, model
 
 def back_prop(X,Y,model,layer1,learning_rate):
     weights1, weights2, output = model['weights1'], model['weights2'], model['output']
@@ -46,16 +46,14 @@ def back_prop(X,Y,model,layer1,learning_rate):
 
 def train(model, X, Y,learning_rate):
     #for i in range(epoc):
-    #layer1, output, model = forward_prop(X, model)
-    #model=back_prop(X, Y, model, layer1, learning_rate)
-    output, layer1, model = forward_prop(X, model)
-    model = back_prop(X,Y,model,layer1,learning_rate)
+    layer1, output, model = forward_prop(X, model)
+    model=back_prop(X, Y, model, layer1, learning_rate)
     return model
 
 def predict(X,Y,model):
     # Code for prediction
     accuracy = 0
-    prediction = forward_prop(X, model)[0]
+    prediction = forward_prop(X, model)[1]
     exp_scores = np.exp(prediction)
     out = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     for i in range(len(out)):

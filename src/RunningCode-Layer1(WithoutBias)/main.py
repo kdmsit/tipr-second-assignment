@@ -10,7 +10,7 @@ import time
 
 if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
-    print('Welcome to the world of neural networks!(On Output)')
+    print('Welcome to the world of neural networks!')
 
 
     imagePixelList = []
