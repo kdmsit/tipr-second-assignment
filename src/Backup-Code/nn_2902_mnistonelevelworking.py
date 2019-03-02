@@ -20,24 +20,23 @@ def tanh_derivative(x):
 
 def initialize_parameters(X,h,out):
     model = {}
-    input_dim = len(X)
+    input_dim = len(X[0])
     model['weights1'] = np.random.rand(input_dim, h)
     model['weights2'] = np.random.rand(h,out)
     return model
 
 def forward_prop(X,model):
     weights1, weights2 = model['weights1'], model['weights2']
-    z1=np.dot(X, weights1)
-    layer1 = sigmoid(z1)
-    zout=np.dot(layer1, weights2)
-    output = sigmoid(zout)
-    return z1,layer1,zout,output, model
+    layer1 = sigmoid(np.dot(X, weights1))
+    output = sigmoid(np.dot(layer1, weights2))
+    model['output'] = output
+    return layer1, output, model
 
-def back_prop(X, Y, z1, layer1, zout, output, model,learning_rate):
-    weights1, weights2= model['weights1'], model['weights2']
-    delta3 = 2 * (Y - output) * sigmoid_derivative(zout)
+def back_prop(X,Y,model,layer1,learning_rate):
+    weights1, weights2, output = model['weights1'], model['weights2'], model['output']
+    delta3 = 2 * (Y - output) * sigmoid_derivative(output)
     d_weights2 = np.dot(layer1.T, delta3)
-    delta2 = np.dot(delta3, weights2.T) * sigmoid_derivative(z1)
+    delta2 = np.dot(delta3, weights2.T) * sigmoid_derivative(layer1)
     d_weights1 = np.dot(X.T, delta2)
     model['weights1'] += learning_rate * d_weights1
     model['weights2'] += learning_rate * d_weights2
@@ -46,14 +45,16 @@ def back_prop(X, Y, z1, layer1, zout, output, model,learning_rate):
 #def compute_cost(model,X,y,reg_lambda):
 
 def train(model, X, Y,epoc,learning_rate):
-    z1, layer1, zout, output, model = forward_prop(X, model)
-    model=back_prop(X, Y, z1, layer1, zout, output, model,learning_rate)
-    return model
+    thismodel=model
+    for i in range(epoc):
+        layer1, output, thismodel = forward_prop(X, model)
+        thismodel=back_prop(X, Y, thismodel, layer1, learning_rate)
+    return thismodel
 
 def predict(X,Y,model):
     # Code for prediction
     accuracy = 0
-    prediction = forward_prop(X, model)[3]
+    prediction = forward_prop(X, model)[1]
     exp_scores = np.exp(prediction)
     out = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     for i in range(len(out)):
