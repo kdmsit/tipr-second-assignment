@@ -4,6 +4,7 @@ import numpy as np
 from random import shuffle
 import nn
 from sklearn.model_selection import train_test_split
+from sklearn.decomposition import PCA
 import time
 
 
@@ -40,6 +41,8 @@ if __name__ == '__main__':
             inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
             for file in glob.glob(path + inputPath):
+            #for k in range(100):
+                #file=glob.glob(path + inputPath)[k]
                 imagepix = []
                 im = Image.open(file)
                 im = im.convert('1')
@@ -51,12 +54,13 @@ if __name__ == '__main__':
                 if (i == 'dog'):
                     imageLabelList.append(1)
 
-
-    traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.05,
-                                                                  random_state=42)
+    pca = PCA(n_components=500).fit(imagePixelList)
+    reducedimagePixelList = pca.transform(imagePixelList)
+    traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList, test_size=0.1,random_state=42)
     print(len(traindata))
     print(len(testdata))
     model={},
+    weights={}
     #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
     configList = [[1000]]
     for config in configList:
@@ -110,7 +114,6 @@ if __name__ == '__main__':
                     weights = nn.train(model, X, Y,weights,learning_rate)
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
-
             X_test = np.asarray(testdata, dtype=None, order=None)
             accuracy=nn.predict(X_test,testlabel,weights)
             print("Test Accuracy ",accuracy*100)
