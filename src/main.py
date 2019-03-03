@@ -98,20 +98,30 @@ if __name__ == '__main__':
                 batchstartIndex=0
                 batchendIndex=batchstartIndex+batchsize
                 while(batchendIndex <= len(traindata)):
+                    if (k == 0):
+                        weights = nn.initialize_parameters(layer)
                     batchImagePixels=[]
                     batchImageLabels = []
                     batchImagePixels=[traindata[i] for i in range(batchstartIndex,batchendIndex)]
                     batchImageLabels = [trainlabel[i] for i in range(batchstartIndex, batchendIndex)]
                     X = np.asarray(batchImagePixels, dtype=None, order=None)
                     y = []
-                    for i in range(len(batchImageLabels)):
-                        labellist = [0 for i in range(10)]
-                        labellist[int(batchImageLabels[i])] = 1
-                        y.append(labellist)
-                    Y = np.asarray(y, dtype=None, order=None)
-                    if(k==0):
-                        weights = nn.initialize_parameters(layer)
-                    weights = nn.train(model, X, Y,weights,learning_rate)
+                    if (datasetname == "MNIST"):
+                        for i in range(len(batchImageLabels)):
+                            labellist = [0 for i in range(10)]
+                            labellist[int(batchImageLabels[i])] = 1
+                            y.append(labellist)
+                        Y = np.asarray(y, dtype=None, order=None)
+                        weights = nn.train(model, X, Y, weights, learning_rate)
+                    elif (datasetname == "Cat-Dog"):
+                        for i in range(len(batchImageLabels)):
+                            labellist = int(batchImageLabels[i])
+                            y.append(labellist)
+                        Y = np.asarray(y, dtype=None, order=None)
+                        shape=Y.size
+                        Y=Y.reshape((shape,1))
+                        weights = nn.train(model, X, Y, weights, learning_rate)
+
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
             X_test = np.asarray(testdata, dtype=None, order=None)

@@ -4,6 +4,7 @@ import numpy as np
 from random import shuffle
 import nn
 from sklearn.model_selection import train_test_split
+from sklearn.decomposition import PCA
 import time
 
 
@@ -16,8 +17,8 @@ if __name__ == '__main__':
     outputFileName = datasetname+"_stat_" + str(time.time()) + ".txt"
     f = open(path + outputpath + outputFileName, "w")
 
-    print('Welcome to the world of neural networks!(MNIST Automated Code)')
-    f.write('Welcome to the world of neural networks!(MNIST Automated Code)')
+    print('Welcome to the world of neural networks!(Automated Code MNIST)')
+    f.write('Welcome to the world of neural networks!(Automated Code MNIST)')
     f.write("\n")
     imagePixelList = []
     imageLabelList = []
@@ -35,17 +36,16 @@ if __name__ == '__main__':
                 imagePixelList.append(imlist[j])
                 imageLabelList.append(i)
     elif(datasetname=="Cat-Dog"):
-        count = 0
         dirlist=['cat','dog']
         for i in dirlist:
             inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
             for file in glob.glob(path + inputPath):
-                count=count+1
-                if(count==100):
-                    break
+            #for k in range(100):
+                #file=glob.glob(path + inputPath)[k]
                 imagepix = []
                 im = Image.open(file)
+                im = im.convert('1')
                 imlist.append(list(im.getdata()))
             for j in range(0, len(imlist)):
                 imagePixelList.append(imlist[j])
@@ -54,21 +54,25 @@ if __name__ == '__main__':
                 if (i == 'dog'):
                     imageLabelList.append(1)
 
-
-    traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
-                                                                  random_state=42)
+    pca = PCA(n_components=500).fit(imagePixelList)
+    reducedimagePixelList = pca.transform(imagePixelList)
+    traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList, test_size=0.1,random_state=42)
+    print(len(traindata))
+    print(len(testdata))
     model={},
     weights={}
     configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
+    #configList = [[1000]]
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]
+        learning_rate_list = [0.002,0.003,0.005,0.006,0.007,0.008,0.009]
+        #learning_rate_list = [0.003,0.3]
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
-        opdim = 10
+        opdim = 0
         if (datasetname == "MNIST"):
             opdim = 10
         elif (datasetname == "Cat-Dog"):
@@ -94,23 +98,32 @@ if __name__ == '__main__':
                 batchstartIndex=0
                 batchendIndex=batchstartIndex+batchsize
                 while(batchendIndex <= len(traindata)):
+                    if (k == 0):
+                        weights = nn.initialize_parameters(layer)
                     batchImagePixels=[]
                     batchImageLabels = []
                     batchImagePixels=[traindata[i] for i in range(batchstartIndex,batchendIndex)]
                     batchImageLabels = [trainlabel[i] for i in range(batchstartIndex, batchendIndex)]
                     X = np.asarray(batchImagePixels, dtype=None, order=None)
                     y = []
-                    for i in range(len(batchImageLabels)):
-                        labellist = [0 for i in range(10)]
-                        labellist[int(batchImageLabels[i])] = 1
-                        y.append(labellist)
-                    Y = np.asarray(y, dtype=None, order=None)
-                    if(k==0):
-                        weights = nn.initialize_parameters(layer)
-                    weights = nn.train(model, X, Y,weights,learning_rate)
+                    if (datasetname == "MNIST"):
+                        for i in range(len(batchImageLabels)):
+                            labellist = [0 for i in range(10)]
+                            labellist[int(batchImageLabels[i])] = 1
+                            y.append(labellist)
+                        Y = np.asarray(y, dtype=None, order=None)
+                        weights = nn.train(model, X, Y, weights, learning_rate)
+                    elif (datasetname == "Cat-Dog"):
+                        for i in range(len(batchImageLabels)):
+                            labellist = int(batchImageLabels[i])
+                            y.append(labellist)
+                        Y = np.asarray(y, dtype=None, order=None)
+                        shape=Y.size
+                        Y=Y.reshape((shape,1))
+                        weights = nn.train(model, X, Y, weights, learning_rate)
+
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
-
             X_test = np.asarray(testdata, dtype=None, order=None)
             accuracy=nn.predict(X_test,testlabel,weights)
             print("Test Accuracy ",accuracy*100)
