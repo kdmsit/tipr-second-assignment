@@ -10,14 +10,14 @@ import time
 
 if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
-    datasetname="MNIST"
-    #datasetname = "Cat-Dog"
+    #datasetname="MNIST"
+    datasetname = "Cat-Dog"
     outputpath = "/output/"
     outputFileName = datasetname+"_stat_" + str(time.time()) + ".txt"
     f = open(path + outputpath + outputFileName, "w")
 
-    print('Welcome to the world of neural networks!(MNIST Automated Code)')
-    f.write('Welcome to the world of neural networks!(MNIST Automated Code)')
+    print('Welcome to the world of neural networks!(Automated Code)')
+    f.write('Welcome to the world of neural networks!')
     f.write("\n")
     imagePixelList = []
     imageLabelList = []
@@ -35,15 +35,11 @@ if __name__ == '__main__':
                 imagePixelList.append(imlist[j])
                 imageLabelList.append(i)
     elif(datasetname=="Cat-Dog"):
-        count = 0
         dirlist=['cat','dog']
         for i in dirlist:
             inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
             for file in glob.glob(path + inputPath):
-                count=count+1
-                if(count==100):
-                    break
                 imagepix = []
                 im = Image.open(file)
                 imlist.append(list(im.getdata()))
@@ -55,19 +51,23 @@ if __name__ == '__main__':
                     imageLabelList.append(1)
 
 
-    traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
+    traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.05,
                                                                   random_state=42)
+    print(len(traindata))
+    print(len(testdata))
     model={},
-    configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
+    #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
+    configList = [[1000]]
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]
+        #learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]
+        learning_rate_list = [0.003,0.3]
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
-        opdim = 10
+        opdim = 0
         if (datasetname == "MNIST"):
             opdim = 10
         elif (datasetname == "Cat-Dog"):
