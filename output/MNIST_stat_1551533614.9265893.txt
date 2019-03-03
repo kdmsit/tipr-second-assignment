@@ -1,5 +1,0 @@
-Welcome to the world of neural networks!
-Epoc :100
-Learning Rate :0.01
-Test Accuracy 92.22222222222223
-Learning Rate :0.03

@@ -1,0 +1,13 @@
+Welcome to the world of neural networks!
+Configuration Details :[600, 50]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 77.85714285714286
+Learning Rate :0.002
+Test Accuracy 87.85714285714286
+Learning Rate :0.003
+Test Accuracy 88.23809523809524
+Learning Rate :0.004
+Test Accuracy 86.23809523809524
+Learning Rate :0.005
