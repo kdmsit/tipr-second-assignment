@@ -86,9 +86,9 @@ if __name__ == '__main__':
     print(len(testdata))
     model={},
     weights={}
-    #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]   '''MNIST'''
-    configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 '''Cat-Dog'''
-    #configList = [[100,50]]                                                                          '''Pubmed'''
+    #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]   #MNIST
+    configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 #Cat-Dog
+    #configList = [[100,50]]                                                                          #Pubmed
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
