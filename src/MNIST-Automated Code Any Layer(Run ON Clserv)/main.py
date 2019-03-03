@@ -16,8 +16,8 @@ if __name__ == '__main__':
     outputFileName = datasetname+"_stat_" + str(time.time()) + ".txt"
     f = open(path + outputpath + outputFileName, "w")
 
-    print('Welcome to the world of neural networks!(Automated Code)')
-    f.write('Welcome to the world of neural networks!')
+    print('Welcome to the world of neural networks!(MNIST Automated Code)')
+    f.write('Welcome to the world of neural networks!(MNIST Automated Code)')
     f.write("\n")
     imagePixelList = []
     imageLabelList = []
