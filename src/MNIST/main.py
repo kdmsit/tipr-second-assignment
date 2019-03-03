@@ -86,14 +86,18 @@ if __name__ == '__main__':
     print(len(testdata))
     model={},
     weights={}
-    configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
-    #configList = [[100,50]]
+    configList = [[600, 50], [500, 50], [700, 50], [400, 50], [600, 100], [500, 100], [600, 100, 20],[500, 50, 20]]  # MNIST
+    # configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 #Cat-Dog
+    # configList = [[100],[60],[100,50],[60,20],[100,50,10]]                                             #Pubmed
+    # configList = [[50],[50,10],[50,30,10]]                                                            #Dolphin
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]
-        #learning_rate_list = [0.001,0.003,0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09]
+        learning_rate_list = [0.001, 0.003, 0.005, 0.007, 0.009, 0.01, 0.03, 0.05, 0.07, 0.09]  # MNIST
+        # learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]    #Cat-Dog
+        # learning_rate_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]  # Dolphin
+        # learning_rate_list = [0.001, 0.003, 0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09] # Pubmed
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
@@ -144,8 +148,14 @@ if __name__ == '__main__':
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
             X_test = np.asarray(testdata, dtype=None, order=None)
-            accuracy=nn.predict(X_test,testlabel,weights)
-            print("Test Accuracy ",accuracy*100)
-            f.write("Test Accuracy "+str(accuracy*100))
+            accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
+            print("Test Accuracy ",accuracyOfMyCode)
+            f.write("Test Accuracy "+str(accuracyOfMyCode))
+            f.write("\n")
+            print("Test F1 Score(Macro) ", f1_score_macro)
+            f.write("Test F1 Score(Macro) " + str(f1_score_macro))
+            f.write("\n")
+            print("Test F1 Score(Micro) ", f1_score_micro)
+            f.write("Test F1 Score(Micro) " + str(f1_score_micro))
             f.write("\n")
     f.close()

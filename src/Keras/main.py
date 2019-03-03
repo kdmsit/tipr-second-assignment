@@ -86,7 +86,7 @@ if __name__ == '__main__':
         traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
                                                                       random_state=42)
 
-    kerasnn.MLP(traindata,trainlabel)
+    kerasnn.MLP(traindata,trainlabel,testdata,testlabel)
 
     # region My Custom Code
     '''model={},
