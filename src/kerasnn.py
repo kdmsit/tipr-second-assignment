@@ -18,3 +18,4 @@ def MLP(X, Y):
     scores = model.evaluate(X, Y)
     print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1] * 100))
     print("Hello")
+    return
