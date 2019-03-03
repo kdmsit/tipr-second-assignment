@@ -9,8 +9,8 @@ import pandas as pd
 import datetime
 if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
-    datasetname="MNIST"
-    #datasetname = "Cat-Dog"
+    #datasetname="MNIST"
+    datasetname = "Cat-Dog"
     #datasetname = "Dolphins"
     #datasetname = "Pubmed"
     outputpath = "/output/"
@@ -59,7 +59,7 @@ if __name__ == '__main__':
                     imageLabelList.append(0)
                 if (i == 'dog'):
                     imageLabelList.append(1)
-        pca = PCA(n_components=500).fit(imagePixelList)
+        pca = PCA(n_components=1000).fit(imagePixelList)
         reducedimagePixelList = pca.transform(imagePixelList)
         traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList,
                                                                       test_size=0.1, random_state=42)
@@ -86,8 +86,9 @@ if __name__ == '__main__':
     print(len(testdata))
     model={},
     weights={}
-    configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
-    #configList = [[100,50]]
+    #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]   '''MNIST'''
+    configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 '''Cat-Dog'''
+    #configList = [[100,50]]                                                                          '''Pubmed'''
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
