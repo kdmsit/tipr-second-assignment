@@ -1,0 +1,65 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Dolphins
+Configuration Details :[50]
+Epoc :1000
+batchsize :10
+Learning Rate :0.1
+Test Accuracy 85.71428571428571
+Learning Rate :0.2
+Test Accuracy 85.71428571428571
+Learning Rate :0.3
+Test Accuracy 85.71428571428571
+Learning Rate :0.4
+Test Accuracy 85.71428571428571
+Learning Rate :0.5
+Test Accuracy 100.0
+Learning Rate :0.6
+Test Accuracy 100.0
+Learning Rate :0.7
+Test Accuracy 100.0
+Learning Rate :0.8
+Test Accuracy 100.0
+Learning Rate :0.9
+Test Accuracy 100.0
+Configuration Details :[50, 10]
+Epoc :1000
+batchsize :10
+Learning Rate :0.1
+Test Accuracy 85.71428571428571
+Learning Rate :0.2
+Test Accuracy 85.71428571428571
+Learning Rate :0.3
+Test Accuracy 85.71428571428571
+Learning Rate :0.4
+Test Accuracy 85.71428571428571
+Learning Rate :0.5
+Test Accuracy 100.0
+Learning Rate :0.6
+Test Accuracy 85.71428571428571
+Learning Rate :0.7
+Test Accuracy 85.71428571428571
+Learning Rate :0.8
+Test Accuracy 85.71428571428571
+Learning Rate :0.9
+Test Accuracy 85.71428571428571
+Configuration Details :[50, 30, 10]
+Epoc :1000
+batchsize :10
+Learning Rate :0.1
+Test Accuracy 42.857142857142854
+Learning Rate :0.2
+Test Accuracy 42.857142857142854
+Learning Rate :0.3
+Test Accuracy 42.857142857142854
+Learning Rate :0.4
+Test Accuracy 42.857142857142854
+Learning Rate :0.5
+Test Accuracy 42.857142857142854
+Learning Rate :0.6
+Test Accuracy 42.857142857142854
+Learning Rate :0.7
+Test Accuracy 42.857142857142854
+Learning Rate :0.8
+Test Accuracy 42.857142857142854
+Learning Rate :0.9
+Test Accuracy 42.857142857142854
