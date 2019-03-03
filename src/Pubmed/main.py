@@ -11,8 +11,8 @@ if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
     #datasetname="MNIST"
     #datasetname = "Cat-Dog"
-    datasetname = "Dolphins"
-    #datasetname = "Pubmed"
+    #datasetname = "Dolphins"
+    datasetname = "Pubmed"
     outputpath = "/output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(path + outputpath + outputFileName, "w")
@@ -86,17 +86,18 @@ if __name__ == '__main__':
     print(len(testdata))
     model={},
     weights={}
-    #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]   #MNIST
+    #configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]    #MNIST
     #configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 #Cat-Dog
-    #configList = [[100,50]]                                                                          #Pubmed
-    configList = [[50],[50,10],[50,30,10]]                                                                          #Pubmed
+    configList = [[100],[60],[100,50],[60,20],[100,50,10]]                                             #Pubmed
+    #configList = [[50],[50,10],[50,30,10]]                                                            #Pubmed
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
         #learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]    #Cat-Dog
         #learning_rate_list = [0.001,0.003,0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09]  #MNIST
-        learning_rate_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]  # Dolphin
+        #learning_rate_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]  # Dolphin
+        learning_rate_list = [0.001, 0.003, 0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09]
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
