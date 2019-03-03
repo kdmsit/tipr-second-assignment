@@ -16,8 +16,8 @@ if __name__ == '__main__':
     outputFileName = datasetname+"_stat_" + str(time.time()) + ".txt"
     f = open(path + outputpath + outputFileName, "w")
 
-    print('Welcome to the world of neural networks!(Automated Code)')
-    f.write('Welcome to the world of neural networks!')
+    print('Welcome to the world of neural networks!(Automated Code Cat-Dog)')
+    f.write('Welcome to the world of neural networks!(Automated Code Cat-Dog)')
     f.write("\n")
     imagePixelList = []
     imageLabelList = []
@@ -42,6 +42,7 @@ if __name__ == '__main__':
             for file in glob.glob(path + inputPath):
                 imagepix = []
                 im = Image.open(file)
+                im = im.convert('1')
                 imlist.append(list(im.getdata()))
             for j in range(0, len(imlist)):
                 imagePixelList.append(imlist[j])
