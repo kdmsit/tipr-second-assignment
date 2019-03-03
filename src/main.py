@@ -35,7 +35,7 @@ if __name__ == '__main__':
     traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.05,
                                                                   random_state=42)
     model={},
-    configList=[[600, 50][500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
+    configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
     for config in configList:
         f.write("Configuration Details :" + str(config))
         f.write("\n")
