@@ -34,8 +34,28 @@ if __name__ == '__main__':
             for j in range(0, len(imlist)):
                 imagePixelList.append(imlist[j])
                 imageLabelList.append(i)
+    elif(datasetname=="Cat-Dog"):
+        count = 0
+        dirlist=['cat','dog']
+        for i in dirlist:
+            inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
+            imlist = []
+            for file in glob.glob(path + inputPath):
+                count=count+1
+                if(count==100):
+                    break
+                imagepix = []
+                im = Image.open(file)
+                imlist.append(list(im.getdata()))
+            for j in range(0, len(imlist)):
+                imagePixelList.append(imlist[j])
+                if(i=='cat'):
+                    imageLabelList.append(0)
+                if (i == 'dog'):
+                    imageLabelList.append(1)
 
-    traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.05,
+
+    traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
                                                                   random_state=42)
     model={},
     configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
@@ -48,6 +68,10 @@ if __name__ == '__main__':
         #config = [600, 50]
         ipdim = len(traindata[0])
         opdim = 10
+        if (datasetname == "MNIST"):
+            opdim = 10
+        elif (datasetname == "Cat-Dog"):
+            opdim = 1
         hiddendim = config
         layer = hiddendim
         layer.append(opdim)
@@ -91,4 +115,4 @@ if __name__ == '__main__':
             print("Test Accuracy ",accuracy*100)
             f.write("Test Accuracy "+str(accuracy*100))
             f.write("\n")
-            f.close()
+    f.close()
