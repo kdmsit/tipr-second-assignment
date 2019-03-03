@@ -31,52 +31,68 @@ def softmax(z):
 def softmax_derivative(z):
     return softmax(z) * (1 - softmax(z))
 
-def initialize_parameters(X,h1,h2,out):
-    model = {}
-    input_dim = len(X[0])
-    model['weights1'] = np.random.rand(input_dim, h1)
-    model['weights2'] = np.random.rand(h1, h2)
-    model['weights3'] = np.random.rand(h2,out)
-    return model
 
-def forward_prop(X,model):
-    weights1, weights2,weights3 = model['weights1'], model['weights2'],model['weights3']
-    #layer1 = sigmoid(np.dot(X, weights1))
-    layer1 = tanh(np.dot(X, weights1))
-    #layer2 = sigmoid(np.dot(layer1, weights2))
-    layer2 = tanh(np.dot(layer1, weights2))
-    #output = sigmoid(np.dot(layer2, weights3))
-    output = softmax(np.dot(layer2, weights3))
-    model['output'] = output
-    return output,layer2,layer1, model
+def initialize_parameters(layer):
+    weights = []
+    for i in range(len(layer) - 1):
+        j = i + 1
+        weight = np.random.rand(layer[i], layer[j])
+        weights.append(weight)
+    return weights
 
-def back_prop(X,Y,model,layer1,layer2,learning_rate):
-    weights1, weights2,weights3,output = model['weights1'], model['weights2'],model['weights3'], model['output']
-    #delta4 = 2 * (Y - output) * sigmoid_derivative(output)
-    delta4 = 2 * (Y - output) * softmax_derivative(output)
-    d_weights3 = np.dot(layer2.T, delta4)
-    #delta3 = np.dot(delta4, weights3.T) * sigmoid_derivative(layer2)
-    delta3 = np.dot(delta4, weights3.T) * tanh_derivative(layer2)
-    d_weights2 = np.dot(layer1.T, delta3)
-    #delta2 = np.dot(delta3, weights2.T) * sigmoid_derivative(layer1)
-    delta2 = np.dot(delta3, weights2.T) * tanh_derivative(layer1)
-    d_weights1 = np.dot(X.T, delta2)
-    model['weights3'] += learning_rate * d_weights3
-    model['weights1'] += learning_rate * d_weights1
-    model['weights2'] += learning_rate * d_weights2
-    return model
+
+def forward_prop(X, weights):
+    layerout = []
+    Z = []
+    y = X
+    layerout.append(y)
+    Z.append([])
+    for w in weights:
+        z = np.dot(y, w)
+        y = sigmoid(z)
+        layerout.append(y)
+        Z.append(z)
+    return layerout, Z
+
+
+def back_prop(layerout, Z,Y, weights, learning_rate):
+    noofLayers = len(layerout)
+    delta = []
+    dweights = []
+    i = noofLayers - 1
+    while (i > 0):
+        if (i == noofLayers - 1):
+            yout = layerout[i]
+            zout = Z[i]
+            thisdelta = (Y - yout) * sigmoid_derivative(yout)
+        else:
+            w = weights[i]
+            z = Z[i]
+            y=layerout[i]
+            thisdelta = np.dot(delta, w.T) * sigmoid_derivative(y)
+        delta = thisdelta
+        y = layerout[i - 1]
+        dweight = np.dot(y.T, thisdelta)
+        dweights.append(dweight)
+        i = i - 1
+    dweights.reverse()
+    for i in range(len(weights)):
+        weights[i] += learning_rate * dweights[i]
+    return weights
 
 #def compute_cost(model,X,y,reg_lambda):
 
-def train(model, X, Y,learning_rate):
-    output,layer2,layer1, model = forward_prop(X, model)
-    model = back_prop(X,Y,model,layer1,layer2,learning_rate)
+def train(model, X, Y,weights,learning_rate):
+    layerout, Z = forward_prop(X,weights)
+    model = back_prop(layerout, Z,Y, weights, learning_rate)
     return model
 
-def predict(X,Y,model):
+def predict(X,Y,weights):
     # Code for prediction
     accuracy = 0
-    prediction = forward_prop(X, model)[0]
+    out = forward_prop(X, weights)[0]
+    k = len(out)
+    prediction = out[k - 1]
     exp_scores = np.exp(prediction)
     out = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     for i in range(len(out)):
