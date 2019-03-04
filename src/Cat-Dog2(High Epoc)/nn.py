@@ -106,5 +106,4 @@ def predict(X,Y,weights):
     accuracyOfMyCode = (accuracy / len(Y)) * 100.0
     f1_score_macro = f1_score(Y, predictions, average='macro')
     f1_score_micro = f1_score(Y, predictions, average='micro')
-    return accuracyOfMyCode,f1_score_macro,f1_score_micro
-
+    return accuracyOfMyCode, f1_score_macro, f1_score_micro
