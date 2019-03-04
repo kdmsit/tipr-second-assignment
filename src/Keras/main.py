@@ -84,7 +84,7 @@ if __name__ == '__main__':
             epoc = 50
         for config in configList:
             print("Configuration ", config)
-            f.write("Test Configuration " + config)
+            f.write("Test Configuration " + str(config))
             f.write("\n")
             X = np.asarray(traindata)
             y = []
