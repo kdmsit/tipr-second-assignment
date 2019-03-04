@@ -1,0 +1,3 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Pubmed
+Test Accuracy 42.73297924427869
