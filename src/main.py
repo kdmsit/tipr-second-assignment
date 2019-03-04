@@ -78,18 +78,28 @@ if __name__ == '__main__':
             imagePixelList = np.genfromtxt(inputFilePath + inputFileName, delimiter=' ')
             imageLabelList = np.genfromtxt(inputFilePath + inputLabelFileName, delimiter=' ')
             traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,random_state=42)
-
-
         model={},
         weights={}
         if(datasetname=="MNIST"):
             configList = [[600, 50], [500, 50], [700, 50], [400, 50], [600, 100], [500, 100], [600, 100, 20], [500, 50, 20]]
+            opdim = 10
+            batchsize = 500
+            epoc = 50
         elif (datasetname == "Cat-Dog"):
             configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]
+            opdim = 2
+            batchsize = 500
+            epoc = 50
         elif (datasetname == "Dolphins"):
             configList = [[100], [60], [100, 50], [60, 20], [100, 50, 10]]
+            opdim = 4
+            batchsize = 52
+            epoc = 50
         elif (datasetname == "Pubmed"):
-            configList = [[50], [50, 10], [50, 30, 10]]                                                         #Dolphin
+            configList = [[50], [50, 10], [50, 30, 10]]
+            opdim = 3
+            batchsize = 500
+            epoc = 50
         X = np.asarray(traindata)
         y = []
         for i in range(len(trainlabel)):
@@ -105,7 +115,7 @@ if __name__ == '__main__':
             y_test.append(labellist)
         Y_test = np.asarray(y_test)
 
-        scores=kerasnn.MLP(X,Y,X_test,Y_test)
+        scores=kerasnn.MLP(X,Y,X_test,Y_test,opdim,batchsize,epoc)
 
         print("Test Accuracy ", scores[1]*100)
         f.write("Test Accuracy " + str(scores[1]*100))
