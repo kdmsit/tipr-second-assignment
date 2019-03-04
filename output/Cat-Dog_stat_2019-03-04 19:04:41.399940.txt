@@ -1,0 +1,44 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Cat-Dog
+Configuration Details :[1000]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 52.32
+Test F1 Score(Macro) 0.35523291237398913
+Test F1 Score(Micro) 0.5232
+Configuration Details :[800]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 56.08
+Test F1 Score(Macro) 0.559083175706238
+Test F1 Score(Micro) 0.5608
+Configuration Details :[400]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 52.35999999999999
+Test F1 Score(Macro) 0.3554177704663788
+Test F1 Score(Micro) 0.5236
+Configuration Details :[200]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 52.28
+Test F1 Score(Macro) 0.35218122157443965
+Test F1 Score(Micro) 0.5228
+Configuration Details :[100]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 53.32
+Test F1 Score(Macro) 0.4526593999346006
+Test F1 Score(Micro) 0.5332
+Configuration Details :[500]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 48.559999999999995
+Test F1 Score(Macro) 0.3546928980491052
+Test F1 Score(Micro) 0.4856
