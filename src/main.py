@@ -80,6 +80,9 @@ if __name__ == '__main__':
             traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,random_state=42)
         model={},
         weights={}
+        opdim=0
+        batchsize=0
+        epoc=0
         if(datasetname=="MNIST"):
             configList = [[600, 50], [500, 50], [700, 50], [400, 50], [600, 100], [500, 100], [600, 100, 20], [500, 50, 20]]
             opdim = 10
@@ -93,13 +96,16 @@ if __name__ == '__main__':
         elif (datasetname == "Dolphins"):
             configList = [[100], [60], [100, 50], [60, 20], [100, 50, 10]]
             opdim = 4
-            batchsize = 52
+            batchsize = 2
             epoc = 50
         elif (datasetname == "Pubmed"):
             configList = [[50], [50, 10], [50, 30, 10]]
             opdim = 3
             batchsize = 500
             epoc = 50
+        print(opdim)
+        print(batchsize)
+        print(epoc)
         X = np.asarray(traindata)
         y = []
         for i in range(len(trainlabel)):
