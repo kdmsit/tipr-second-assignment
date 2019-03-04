@@ -17,7 +17,7 @@ if __name__ == '__main__':
     for datasetname in datasetList:
         print(datasetname)
         outputpath = "../output/"
-        outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
+        outputFileName = datasetname+"Keras_stat_" + str(datetime.datetime.now()) + ".txt"
         f = open(outputpath + outputFileName, "w")
         Message="Welcome to the world of neural networks!"
         print(Message)
