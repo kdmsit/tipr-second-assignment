@@ -3,8 +3,15 @@ from keras.layers import Dense
 import numpy as np
 
 
-def MLP(X, Y,X_test,Y_test,opdim,batchsize,epoc):
+def MLP(X,Y,X_test,Y_test,opdim,batchsize,epoc):
     np.random.seed(7)
+    print(opdim)
+    print(batchsize)
+    print(epoc)
+    print(len(X[0]))
+    print(len(Y[0]))
+    print(len(X_test[0]))
+    print(len(Y_test[0]))
     # create model
     model = Sequential()
     model.add(Dense(600, input_dim=len(X[0]), activation='sigmoid'))
