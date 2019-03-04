@@ -1,6 +1,9 @@
 # Implement Neural Network here!
 import numpy as np
+<<<<<<< HEAD
 from sklearn.metrics import f1_score
+=======
+>>>>>>> d6411173749e936908a5a0b99d132ccda3956b37
 import random
 
 # region Sigmoid Activation Function
@@ -91,7 +94,10 @@ def train(model, X, Y,weights,learning_rate):
 def predict(X,Y,weights):
     # Code for prediction
     accuracy = 0
+<<<<<<< HEAD
     predictions=[]
+=======
+>>>>>>> d6411173749e936908a5a0b99d132ccda3956b37
     out = forward_prop(X, weights)[0]
     k = len(out)
     prediction = out[k - 1]
@@ -100,6 +106,7 @@ def predict(X,Y,weights):
     for i in range(len(out)):
         pred=list(out[i])
         index=pred.index(max(pred))
+<<<<<<< HEAD
         predictions.append(index)
         if(index==Y[i]):
             accuracy=accuracy+1
@@ -107,3 +114,9 @@ def predict(X,Y,weights):
     f1_score_macro = f1_score(Y, predictions, average='macro')
     f1_score_micro = f1_score(Y, predictions, average='micro')
     return accuracyOfMyCode,f1_score_macro,f1_score_micro
+=======
+        #print(index,Y[i])
+        if(index==Y[i]):
+            accuracy=accuracy+1
+    return accuracy /len(Y)
+>>>>>>> d6411173749e936908a5a0b99d132ccda3956b37

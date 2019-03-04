@@ -6,7 +6,6 @@ import nn
 import kerasnn
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
-import pandas as pd
 import datetime
 
 
@@ -85,8 +84,23 @@ if __name__ == '__main__':
         imageLabelList = np.genfromtxt(inputFilePath + inputLabelFileName, delimiter=' ')
         traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
                                                                       random_state=42)
-
-    kerasnn.MLP(traindata,trainlabel,testdata,testlabel)
+    X = np.asarray(traindata)
+    y = []
+    for i in range(len(trainlabel)):
+        labellist = [0 for i in range(10)]
+        labellist[int(trainlabel[i])] = 1
+        y.append(labellist)
+    Y = np.asarray(y)
+    Y = Y.reshape((Y.size, 1))
+    X_test = np.asarray(testdata)
+    y_test = []
+    for i in range(len(testlabel)):
+        labellist = [0 for i in range(10)]
+        labellist[int(testlabel[i])] = 1
+        y_test.append(labellist)
+    Y_test = np.asarray(y_test)
+    Y_test = Y_test.reshape((Y_test.size, 1))
+    kerasnn.MLP(X,Y,X_test,Y_test)
 
     # region My Custom Code
     '''model={},
