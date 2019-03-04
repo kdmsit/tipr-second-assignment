@@ -1,0 +1,128 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Cat-Dog
+Configuration Details :[1000]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 55.24
+Learning Rate :0.002
+Test Accuracy 52.35999999999999
+Learning Rate :0.003
+Test Accuracy 52.12
+Learning Rate :0.004
+Test Accuracy 52.35999999999999
+Learning Rate :0.005
+Test Accuracy 52.52
+Learning Rate :0.006
+Test Accuracy 57.04
+Learning Rate :0.007
+Test Accuracy 55.120000000000005
+Learning Rate :0.008
+Test Accuracy 53.04
+Learning Rate :0.009
+Test Accuracy 53.959999999999994
+Configuration Details :[500]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 54.67999999999999
+Learning Rate :0.002
+Test Accuracy 53.879999999999995
+Learning Rate :0.003
+Test Accuracy 54.52
+Learning Rate :0.004
+Test Accuracy 55.400000000000006
+Learning Rate :0.005
+Test Accuracy 52.32
+Learning Rate :0.006
+Test Accuracy 54.67999999999999
+Learning Rate :0.007
+Test Accuracy 52.839999999999996
+Learning Rate :0.008
+Test Accuracy 48.199999999999996
+Learning Rate :0.009
+Test Accuracy 55.720000000000006
+Configuration Details :[700, 50]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 57.96
+Learning Rate :0.002
+Test Accuracy 56.92
+Learning Rate :0.003
+Test Accuracy 56.84
+Learning Rate :0.004
+Test Accuracy 56.39999999999999
+Learning Rate :0.005
+Test Accuracy 55.720000000000006
+Learning Rate :0.006
+Test Accuracy 56.279999999999994
+Learning Rate :0.007
+Test Accuracy 56.92
+Learning Rate :0.008
+Test Accuracy 57.68
+Learning Rate :0.009
+Test Accuracy 56.8
+Configuration Details :[500, 50]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 57.36
+Learning Rate :0.002
+Test Accuracy 57.199999999999996
+Learning Rate :0.003
+Test Accuracy 57.28
+Learning Rate :0.004
+Test Accuracy 57.440000000000005
+Learning Rate :0.005
+Test Accuracy 56.2
+Learning Rate :0.006
+Test Accuracy 56.84
+Learning Rate :0.007
+Test Accuracy 57.199999999999996
+Learning Rate :0.008
+Test Accuracy 56.84
+Learning Rate :0.009
+Test Accuracy 56.720000000000006
+Configuration Details :[600, 100, 20]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 55.559999999999995
+Learning Rate :0.002
+Test Accuracy 48.08
+Learning Rate :0.003
+Test Accuracy 48.08
+Learning Rate :0.004
+Test Accuracy 55.879999999999995
+Learning Rate :0.005
+Test Accuracy 53.839999999999996
+Learning Rate :0.006
+Test Accuracy 56.96
+Learning Rate :0.007
+Test Accuracy 56.92
+Learning Rate :0.008
+Test Accuracy 56.92
+Learning Rate :0.009
+Test Accuracy 55.04
+Configuration Details :[500, 50, 20]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 48.08
+Learning Rate :0.002
+Test Accuracy 48.08
+Learning Rate :0.003
+Test Accuracy 48.08
+Learning Rate :0.004
+Test Accuracy 56.8
+Learning Rate :0.005
+Test Accuracy 57.24
+Learning Rate :0.006
+Test Accuracy 56.599999999999994
+Learning Rate :0.007
+Test Accuracy 57.36
+Learning Rate :0.008
+Test Accuracy 55.00000000000001
+Learning Rate :0.009
+Test Accuracy 54.96
