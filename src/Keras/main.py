@@ -13,7 +13,7 @@ if __name__ == '__main__':
     #datasetname = "Cat-Dog"
     #datasetname = "Dolphins"
     #datasetname = "Pubmed"
-    datasetList=["Dolphins","Pubmed","MNIST","Cat-Dog"]
+    datasetList=["Cat-Dog"]   #Include Catdog here
     for datasetname in datasetList:
         print(datasetname)
         outputpath = "../output/"
