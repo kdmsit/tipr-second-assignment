@@ -1,0 +1,217 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Pubmed
+Configuration Details :[100]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 43.60212457749879
+Test F1 Score(Macro) 0.3290890465629574
+Test F1 Score(Micro) 0.4360212457749879
+Learning Rate :0.003
+Test Accuracy 43.5538387252535
+Test F1 Score(Macro) 0.32979491595048466
+Test F1 Score(Micro) 0.435538387252535
+Learning Rate :0.005
+Test Accuracy 43.5538387252535
+Test F1 Score(Macro) 0.32667763733343896
+Test F1 Score(Micro) 0.435538387252535
+Learning Rate :0.007
+Test Accuracy 43.40898116851763
+Test F1 Score(Macro) 0.32986955610183605
+Test F1 Score(Micro) 0.43408981168517624
+Learning Rate :0.009
+Test Accuracy 43.11926605504588
+Test F1 Score(Macro) 0.32191195349438706
+Test F1 Score(Micro) 0.4311926605504588
+Learning Rate :0.01
+Test Accuracy 44.084983099951714
+Test F1 Score(Macro) 0.3294059692974136
+Test F1 Score(Micro) 0.44084983099951713
+Learning Rate :0.03
+Test Accuracy 43.16755190729116
+Test F1 Score(Macro) 0.3247029096417348
+Test F1 Score(Micro) 0.43167551907291163
+Learning Rate :0.05
+Test Accuracy 43.84355383872525
+Test F1 Score(Macro) 0.3320476167329333
+Test F1 Score(Micro) 0.4384355383872525
+Learning Rate :0.07
+Test Accuracy 44.47126991791405
+Test F1 Score(Macro) 0.3338801985571906
+Test F1 Score(Micro) 0.4447126991791405
+Learning Rate :0.09
+Test Accuracy 42.97440849831
+Test F1 Score(Macro) 0.3069350571544362
+Test F1 Score(Micro) 0.42974408498309996
+Configuration Details :[60]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 42.73297923708353
+Test F1 Score(Macro) 0.32384260490450967
+Test F1 Score(Micro) 0.42732979237083535
+Learning Rate :0.003
+Test Accuracy 43.40898116851763
+Test F1 Score(Macro) 0.32962230579719304
+Test F1 Score(Micro) 0.43408981168517624
+Learning Rate :0.005
+Test Accuracy 43.40898116851763
+Test F1 Score(Macro) 0.3292160925165453
+Test F1 Score(Micro) 0.43408981168517624
+Learning Rate :0.007
+Test Accuracy 43.5538387252535
+Test F1 Score(Macro) 0.32657609001168236
+Test F1 Score(Micro) 0.435538387252535
+Learning Rate :0.009
+Test Accuracy 43.650410429744085
+Test F1 Score(Macro) 0.32784130431978303
+Test F1 Score(Micro) 0.43650410429744085
+Learning Rate :0.01
+Test Accuracy 43.07098020280058
+Test F1 Score(Macro) 0.3260658565952332
+Test F1 Score(Micro) 0.4307098020280058
+Learning Rate :0.03
+Test Accuracy 43.215837759536456
+Test F1 Score(Macro) 0.32985247897609443
+Test F1 Score(Micro) 0.4321583775953646
+Learning Rate :0.05
+Test Accuracy 44.22984065668759
+Test F1 Score(Macro) 0.33652178821710255
+Test F1 Score(Micro) 0.4422984065668759
+Learning Rate :0.07
+Test Accuracy 43.36069531627233
+Test F1 Score(Macro) 0.3299829106829663
+Test F1 Score(Micro) 0.4336069531627233
+Learning Rate :0.09
+Test Accuracy 44.47126991791405
+Test F1 Score(Macro) 0.32836352451718387
+Test F1 Score(Micro) 0.4447126991791405
+Configuration Details :[100, 50]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 37.13182037662965
+Test F1 Score(Macro) 0.277982319366233
+Test F1 Score(Micro) 0.3713182037662965
+Learning Rate :0.003
+Test Accuracy 44.084983099951714
+Test F1 Score(Macro) 0.3285936751317681
+Test F1 Score(Micro) 0.44084983099951713
+Learning Rate :0.005
+Test Accuracy 36.89039111540319
+Test F1 Score(Macro) 0.18369349550531267
+Test F1 Score(Micro) 0.36890391115403187
+Learning Rate :0.007
+Test Accuracy 36.69724770642202
+Test F1 Score(Macro) 0.1789709172259508
+Test F1 Score(Micro) 0.3669724770642202
+Learning Rate :0.009
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.01
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.03
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.05
+Test Accuracy 44.42298406566876
+Test F1 Score(Macro) 0.3319304822447975
+Test F1 Score(Micro) 0.4442298406566876
+Learning Rate :0.07
+Test Accuracy 21.970062771607918
+Test F1 Score(Macro) 0.1200844550013196
+Test F1 Score(Micro) 0.21970062771607918
+Learning Rate :0.09
+Test Accuracy 21.970062771607918
+Test F1 Score(Macro) 0.1200844550013196
+Test F1 Score(Micro) 0.21970062771607918
+Configuration Details :[60, 20]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 36.359246740704975
+Test F1 Score(Macro) 0.2668795943868722
+Test F1 Score(Micro) 0.36359246740704976
+Learning Rate :0.003
+Test Accuracy 40.077257363592466
+Test F1 Score(Macro) 0.268344418601488
+Test F1 Score(Micro) 0.40077257363592467
+Learning Rate :0.005
+Test Accuracy 43.84355383872525
+Test F1 Score(Macro) 0.3282252849087109
+Test F1 Score(Micro) 0.4384355383872525
+Learning Rate :0.007
+Test Accuracy 43.5538387252535
+Test F1 Score(Macro) 0.32563397172002906
+Test F1 Score(Micro) 0.435538387252535
+Learning Rate :0.009
+Test Accuracy 43.60212457749879
+Test F1 Score(Macro) 0.3220341768992409
+Test F1 Score(Micro) 0.4360212457749879
+Learning Rate :0.01
+Test Accuracy 44.1815548044423
+Test F1 Score(Macro) 0.32613136932788594
+Test F1 Score(Micro) 0.44181554804442297
+Learning Rate :0.03
+Test Accuracy 44.42298406566876
+Test F1 Score(Macro) 0.3326441927992759
+Test F1 Score(Micro) 0.4442298406566876
+Learning Rate :0.05
+Test Accuracy 42.82955094157412
+Test F1 Score(Macro) 0.3201173245891901
+Test F1 Score(Micro) 0.4282955094157412
+Learning Rate :0.07
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.09
+Test Accuracy 21.970062771607918
+Test F1 Score(Macro) 0.1200844550013196
+Test F1 Score(Micro) 0.21970062771607918
+Configuration Details :[100, 50, 10]
+Epoc :50
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 36.69724770642202
+Test F1 Score(Macro) 0.1789709172259508
+Test F1 Score(Micro) 0.3669724770642202
+Learning Rate :0.003
+Test Accuracy 43.16755190729116
+Test F1 Score(Macro) 0.322740042556021
+Test F1 Score(Micro) 0.43167551907291163
+Learning Rate :0.005
+Test Accuracy 36.69724770642202
+Test F1 Score(Macro) 0.1789709172259508
+Test F1 Score(Micro) 0.3669724770642202
+Learning Rate :0.007
+Test Accuracy 43.79526798647996
+Test F1 Score(Macro) 0.3260430955046569
+Test F1 Score(Micro) 0.43795267986479963
+Learning Rate :0.009
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.01
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.03
+Test Accuracy 41.33268952197006
+Test F1 Score(Macro) 0.1949664047375014
+Test F1 Score(Micro) 0.4133268952197007
+Learning Rate :0.05
+Test Accuracy 43.84355383872525
+Test F1 Score(Macro) 0.3286653444138356
+Test F1 Score(Micro) 0.4384355383872525
+Learning Rate :0.07
+Test Accuracy 36.69724770642202
+Test F1 Score(Macro) 0.1789709172259508
+Test F1 Score(Micro) 0.3669724770642202
+Learning Rate :0.09
+Test Accuracy 21.970062771607918
+Test F1 Score(Macro) 0.1200844550013196
+Test F1 Score(Micro) 0.21970062771607918
