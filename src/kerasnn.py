@@ -16,6 +16,4 @@ def MLP(X, Y,X_test,Y_test):
     model.fit(X, Y, epochs=50, batch_size=500)
     # evaluate the model
     scores = model.evaluate(X_test,Y_test)
-    print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1] * 100))
-    print("Hello")
-    return
+    return scores

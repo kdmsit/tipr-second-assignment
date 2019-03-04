@@ -98,7 +98,8 @@ if __name__ == '__main__':
         labellist[int(testlabel[i])] = 1
         y_test.append(labellist)
     Y_test = np.asarray(y_test)
-    kerasnn.MLP(X,Y,X_test,Y_test)
+
+    scores=kerasnn.MLP(X,Y,X_test,Y_test)
 
     # region My Custom Code
     '''model={},
@@ -172,6 +173,8 @@ if __name__ == '__main__':
             f.write("\n")'''
     # endregion
 
-
+    print("Test Accuracy ", scores[1]*100)
+    f.write("Test Accuracy " + str(scores[1]*100))
+    f.write("\n")
 
     f.close()
