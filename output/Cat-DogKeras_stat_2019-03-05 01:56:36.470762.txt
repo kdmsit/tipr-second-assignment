@@ -1,0 +1,14 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Cat-Dog
+Test Configuration [1000, 100]
+Test Accuracy 55.64
+Test Configuration [800, 100]
+Test Accuracy 55.96
+Test Configuration [400, 100]
+Test Accuracy 57.24
+Test Configuration [200, 50]
+Test Accuracy 56.720000000000006
+Test Configuration [100, 50]
+Test Accuracy 56.92
+Test Configuration [500, 100]
+Test Accuracy 57.52
