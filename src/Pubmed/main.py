@@ -5,7 +5,6 @@ from random import shuffle
 import nn
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
-import pandas as pd
 import datetime
 if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
