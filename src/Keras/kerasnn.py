@@ -7,7 +7,7 @@ def MLP(X, Y,X_test,Y_test):
     np.random.seed(7)
     # create model
     model = Sequential()
-    model.add(Dense(600, input_dim=785, activation='sigmoid'))
+    model.add(Dense(600, input_dim=784, activation='sigmoid'))
     model.add(Dense(50, activation='sigmoid'))
     model.add(Dense(10, activation='sigmoid'))
     # Compile model

@@ -3,12 +3,9 @@ from PIL import Image
 import numpy as np
 from random import shuffle
 import nn
-import kerasnn
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 import datetime
-
-
 if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
     datasetname="MNIST"
@@ -61,12 +58,12 @@ if __name__ == '__main__':
                     imageLabelList.append(0)
                 if (i == 'dog'):
                     imageLabelList.append(1)
-        pca = PCA(n_components=1000).fit(imagePixelList)
+        pca = PCA(n_components=500).fit(imagePixelList)
         reducedimagePixelList = pca.transform(imagePixelList)
         traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList,
                                                                       test_size=0.1, random_state=42)
     elif(datasetname=="Dolphins"):
-        inputFilePath = '/data/dolphins/'
+        inputFilePath = 'data/dolphins/'
         inputFileName = 'dolphins.csv'
         inputLabelFileName = 'dolphins_label.csv'
         #filepath=path+inputFilePath+inputFilePath
@@ -75,7 +72,7 @@ if __name__ == '__main__':
         imageLabelList = np.genfromtxt(inputFilePath+inputLabelFileName, delimiter=' ')
         traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList,test_size=0.1, random_state=42)
     elif (datasetname == "Pubmed"):
-        inputFilePath = '/data/pubmed/'
+        inputFilePath = 'data/pubmed/'
         inputFileName = 'pubmed.csv'
         inputLabelFileName = 'pubmed_label.csv'
         # filepath=path+inputFilePath+inputFilePath
@@ -91,7 +88,7 @@ if __name__ == '__main__':
         labellist[int(trainlabel[i])] = 1
         y.append(labellist)
     Y = np.asarray(y)
-    Y = Y.reshape((Y.size, 1))
+    #Y = Y.reshape((Y.size, 1))
     X_test = np.asarray(testdata)
     y_test = []
     for i in range(len(testlabel)):
@@ -99,24 +96,23 @@ if __name__ == '__main__':
         labellist[int(testlabel[i])] = 1
         y_test.append(labellist)
     Y_test = np.asarray(y_test)
-    Y_test = Y_test.reshape((Y_test.size, 1))
-    kerasnn.MLP(X,Y,X_test,Y_test)
+    #Y_test = Y_test.reshape((Y_test.size, 1))
 
-    # region My Custom Code
-    '''model={},
+
+    model={},
     weights={}
-    configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]    #MNIST
-    #configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 #Cat-Dog
-    #configList = [[100],[60],[100,50],[60,20],[100,50,10]]                                             #Pubmed
-    #configList = [[50],[50,10],[50,30,10]]                                                            #Pubmed
+    configList = [[600, 50], [500, 50], [700, 50], [400, 50], [600, 100], [500, 100], [600, 100, 20],[500, 50, 20]]  # MNIST
+    # configList = [[1000], [500], [700, 50], [500, 50], [600, 100, 20], [500, 50, 20]]                 #Cat-Dog
+    # configList = [[100],[60],[100,50],[60,20],[100,50,10]]                                             #Pubmed
+    # configList = [[50],[50,10],[50,30,10]]                                                            #Dolphin
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.001,0.003,0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09]  #MNIST
-        #learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]    #Cat-Dog
-        #learning_rate_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]  # Dolphin
-        #learning_rate_list = [0.001, 0.003, 0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09]
+        learning_rate_list = [0.001, 0.003, 0.005, 0.007, 0.009, 0.01, 0.03, 0.05, 0.07, 0.09]  # MNIST
+        # learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]    #Cat-Dog
+        # learning_rate_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]  # Dolphin
+        # learning_rate_list = [0.001, 0.003, 0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09] # Pubmed
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
@@ -134,9 +130,8 @@ if __name__ == '__main__':
         layer.append(opdim)
         layer.insert(0, ipdim)
         # endregion
-        epoc = 1000
+        epoc = 50
         batchsize = 500
-        #batchsize = 10  #Dolphin
         print("Epoc :", epoc)
         f.write("Epoc :"+ str(epoc))
         f.write("\n")
@@ -168,12 +163,14 @@ if __name__ == '__main__':
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
             X_test = np.asarray(testdata, dtype=None, order=None)
-            accuracy=nn.predict(X_test,testlabel,weights)
-            print("Test Accuracy ",accuracy*100)
-            f.write("Test Accuracy "+str(accuracy*100))
-            f.write("\n")'''
-    # endregion
-
-
-
+            accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
+            print("Test Accuracy ",accuracyOfMyCode)
+            f.write("Test Accuracy "+str(accuracyOfMyCode))
+            f.write("\n")
+            print("Test F1 Score(Macro) ", f1_score_macro)
+            f.write("Test F1 Score(Macro) " + str(f1_score_macro))
+            f.write("\n")
+            print("Test F1 Score(Micro) ", f1_score_micro)
+            f.write("Test F1 Score(Micro) " + str(f1_score_micro))
+            f.write("\n")
     f.close()
