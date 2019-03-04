@@ -84,8 +84,13 @@ if __name__ == '__main__':
         imageLabelList = np.genfromtxt(inputFilePath + inputLabelFileName, delimiter=' ')
         traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
                                                                       random_state=42)
-
-    kerasnn.MLP(traindata,trainlabel,testdata,testlabel)
+    X = np.asarray(traindata)
+    Y = np.asarray(trainlabel)
+    Y = Y.reshape((Y.size, 1))
+    X_test = np.asarray(testdata)
+    Y_test = np.asarray(testlabel)
+    Y_test = Y_test.reshape((Y.size, 1))
+    kerasnn.MLP(X,Y,X_test,Y_test)
 
     # region My Custom Code
     '''model={},
