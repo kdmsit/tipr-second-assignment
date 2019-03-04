@@ -5,17 +5,14 @@ from random import shuffle
 import nn
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
-import pandas as pd
 import datetime
 if __name__ == '__main__':
-    #path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
+    path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
     datasetname="MNIST"
     #datasetname = "Cat-Dog"
-    #datasetname = "Dolphins"
-    #datasetname = "Pubmed"
-    outputpath = "../output/"
+    outputpath = "/output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
-    f = open(outputpath + outputFileName, "w")
+    f = open(path + outputpath + outputFileName, "w")
     Message="Welcome to the world of neural networks!"
     print(Message)
     f.write(Message)
@@ -30,17 +27,16 @@ if __name__ == '__main__':
     imageLabelListTest = []
     if(datasetname=="MNIST"):
         for i in range(0, 10):
-            inputPath = "../data/"+datasetname+"/" + str(i) + "/*jpg"
+            inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
-            for file in glob.glob( inputPath):
+            for file in glob.glob(path + inputPath):
                 imagepix = []
                 im = Image.open(file)
                 imlist.append(list(im.getdata()))
             for j in range(0, len(imlist)):
                 imagePixelList.append(imlist[j])
                 imageLabelList.append(i)
-        traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList,
-                                                                      test_size=0.1, random_state=42)
+        traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList,test_size=0.1, random_state=42)
     elif(datasetname=="Cat-Dog"):
         dirlist=['cat','dog']
         for i in dirlist:
@@ -61,39 +57,20 @@ if __name__ == '__main__':
                     imageLabelList.append(1)
         pca = PCA(n_components=500).fit(imagePixelList)
         reducedimagePixelList = pca.transform(imagePixelList)
-        traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList,
-                                                                      test_size=0.1, random_state=42)
-    elif(datasetname=="Dolphins"):
-        inputFilePath = 'data/dolphins/'
-        inputFileName = 'dolphins.csv'
-        inputLabelFileName = 'dolphins_label.csv'
-        #filepath=path+inputFilePath+inputFilePath
-        #imagePixelList=pd.read_csv(filepath, sep=',', header=None)
-        imagePixelList = np.genfromtxt(inputFilePath+inputFileName, delimiter=' ')
-        imageLabelList = np.genfromtxt(inputFilePath+inputLabelFileName, delimiter=' ')
-        traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList,test_size=0.1, random_state=42)
-    elif (datasetname == "Pubmed"):
-        inputFilePath = 'data/pubmed/'
-        inputFileName = 'pubmed.csv'
-        inputLabelFileName = 'pubmed_label.csv'
-        # filepath=path+inputFilePath+inputFilePath
-        # imagePixelList=pd.read_csv(filepath, sep=',', header=None)
-        imagePixelList = np.genfromtxt(inputFilePath + inputFileName, delimiter=' ')
-        imageLabelList = np.genfromtxt(inputFilePath + inputLabelFileName, delimiter=' ')
-        traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
-                                                                      random_state=42)
+        traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList,test_size=0.1, random_state=42)
+
     print(len(traindata))
     print(len(testdata))
     model={},
     weights={}
-    configList=[[600, 50],[500,50],[700,50],[400,50],[600,100],[500,100],[600,100,20],[500,50,20]]
-    #configList = [[100,50]]
+    configList = [[600],[500],[400],[300],[100]]
+    #configList = [[600,100],[600,50],[500,100],[500,50],[400,100],[400,50],[200,50],[100,20]]
+    #configList = [[600, 100, 20],[500, 100, 20],[600, 50, 20],[500, 50, 20],[200,50,20],[100,50,20]]
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009]
-        #learning_rate_list = [0.001,0.003,0.005,0.007,0.009,0.01,0.03,0.05,0.07,0.09]
+        learning_rate_list = [0.003,0.004,0.005]  # MNIST
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
@@ -102,10 +79,6 @@ if __name__ == '__main__':
             opdim = 10
         elif (datasetname == "Cat-Dog"):
             opdim = 2
-        if (datasetname == "Dolphins"):
-            opdim = 4
-        if (datasetname == "Pubmed"):
-            opdim = 3
         hiddendim = config
         layer = hiddendim
         layer.append(opdim)
@@ -144,8 +117,14 @@ if __name__ == '__main__':
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
             X_test = np.asarray(testdata, dtype=None, order=None)
-            accuracy=nn.predict(X_test,testlabel,weights)
-            print("Test Accuracy ",accuracy*100)
-            f.write("Test Accuracy "+str(accuracy*100))
+            accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
+            print("Test Accuracy ",accuracyOfMyCode)
+            f.write("Test Accuracy "+str(accuracyOfMyCode))
+            f.write("\n")
+            print("Test F1 Score(Macro) ", f1_score_macro)
+            f.write("Test F1 Score(Macro) " + str(f1_score_macro))
+            f.write("\n")
+            print("Test F1 Score(Micro) ", f1_score_micro)
+            f.write("Test F1 Score(Micro) " + str(f1_score_micro))
             f.write("\n")
     f.close()
