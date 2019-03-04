@@ -8,8 +8,8 @@ from sklearn.decomposition import PCA
 import datetime
 if __name__ == '__main__':
     path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
-    #datasetname="MNIST"
-    datasetname = "Cat-Dog"
+    datasetname="MNIST"
+    #datasetname = "Cat-Dog"
     outputpath = "/output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(path + outputpath + outputFileName, "w")
@@ -36,8 +36,7 @@ if __name__ == '__main__':
             for j in range(0, len(imlist)):
                 imagePixelList.append(imlist[j])
                 imageLabelList.append(i)
-        traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList,
-                                                                      test_size=0.1, random_state=42)
+        traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList,test_size=0.1, random_state=42)
     elif(datasetname=="Cat-Dog"):
         dirlist=['cat','dog']
         for i in dirlist:
@@ -56,23 +55,24 @@ if __name__ == '__main__':
                     imageLabelList.append(0)
                 if (i == 'dog'):
                     imageLabelList.append(1)
-        pca = PCA(n_components=1000).fit(imagePixelList)
+        pca = PCA(n_components=500).fit(imagePixelList)
         reducedimagePixelList = pca.transform(imagePixelList)
-        traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList,
-                                                                      test_size=0.1, random_state=42)
+        traindata, testdata, trainlabel, testlabel = train_test_split(reducedimagePixelList, imageLabelList,test_size=0.1, random_state=42)
 
+    print(len(traindata))
+    print(len(testdata))
     model={},
     weights={}
-
-    configList = [[1000], [800], [400], [200], [100], [500]]
-    #configList = [[1000,100], [800,100], [400,100], [200,50], [100,50], [500,100]]
-    #configList = [[1000, 100,20], [800, 100,20], [400, 100,20], [200, 50,10], [100, 50,10], [500, 100,20]]
+    configList = [[600],[500],[400],[300],[100]]
+    #configList = [[600,100],[600,50],[500,100],[500,50],[400,100],[400,50],[200,50],[100,20]]
+    #configList = [[600, 100, 20],[500, 100, 20],[600, 50, 20],[500, 50, 20],[200,50,20],[100,50,20]]
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.003]
+        learning_rate_list = [0.003,0.004,0.005]  # MNIST
         # region config Details
+        #config = [600, 50]
         ipdim = len(traindata[0])
         opdim = 0
         if (datasetname == "MNIST"):
@@ -117,9 +117,9 @@ if __name__ == '__main__':
                     batchstartIndex=batchendIndex
                     batchendIndex=batchstartIndex+batchsize
             X_test = np.asarray(testdata, dtype=None, order=None)
-            accuracyOfMyCode, f1_score_macro, f1_score_micro = nn.predict(X_test, testlabel, weights)
-            print("Test Accuracy ", accuracyOfMyCode)
-            f.write("Test Accuracy " + str(accuracyOfMyCode))
+            accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
+            print("Test Accuracy ",accuracyOfMyCode)
+            f.write("Test Accuracy "+str(accuracyOfMyCode))
             f.write("\n")
             print("Test F1 Score(Macro) ", f1_score_macro)
             f.write("Test F1 Score(Macro) " + str(f1_score_macro))
