@@ -108,7 +108,7 @@ if __name__ == '__main__':
         X = np.asarray(traindata)
         y = []
         for i in range(len(trainlabel)):
-            labellist = [0 for i in range(10)]
+            labellist = [0 for i in range(opdim)]
             labellist[int(trainlabel[i])] = 1
             y.append(labellist)
         Y = np.asarray(y)
