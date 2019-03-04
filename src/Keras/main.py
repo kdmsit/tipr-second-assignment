@@ -83,6 +83,9 @@ if __name__ == '__main__':
             batchsize = 500
             epoc = 50
         for config in configList:
+            print("Configuration ", config)
+            f.write("Test Configuration " + config)
+            f.write("\n")
             X = np.asarray(traindata)
             y = []
             for i in range(len(trainlabel)):
@@ -103,4 +106,4 @@ if __name__ == '__main__':
             print("Test Accuracy ", scores[1]*100)
             f.write("Test Accuracy " + str(scores[1]*100))
             f.write("\n")
-            f.close()
+        f.close()
