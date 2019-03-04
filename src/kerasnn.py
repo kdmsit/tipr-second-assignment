@@ -11,7 +11,7 @@ def MLP(X, Y,X_test,Y_test):
     model.add(Dense(50, activation='sigmoid'))
     model.add(Dense(10, activation='sigmoid'))
     # Compile model
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
     # Fit the model
     model.fit(X, Y, epochs=50, batch_size=500)
     # evaluate the model
