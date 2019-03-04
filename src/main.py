@@ -85,11 +85,21 @@ if __name__ == '__main__':
         traindata, testdata, trainlabel, testlabel = train_test_split(imagePixelList, imageLabelList, test_size=0.1,
                                                                       random_state=42)
     X = np.asarray(traindata)
-    Y = np.asarray(trainlabel)
+    y = []
+    for i in range(len(trainlabel)):
+        labellist = [0 for i in range(10)]
+        labellist[int(trainlabel[i])] = 1
+        y.append(labellist)
+    Y = np.asarray(y)
     Y = Y.reshape((Y.size, 1))
     X_test = np.asarray(testdata)
-    Y_test = np.asarray(testlabel)
-    Y_test = Y_test.reshape((Y.size, 1))
+    y_test = []
+    for i in range(len(testlabel)):
+        labellist = [0 for i in range(10)]
+        labellist[int(testlabel[i])] = 1
+        y_test.append(labellist)
+    Y_test = np.asarray(y_test)
+    Y_test = Y_test.reshape((Y_test.size, 1))
     kerasnn.MLP(X,Y,X_test,Y_test)
 
     # region My Custom Code
