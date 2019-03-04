@@ -1,0 +1,117 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Pubmed
+Configuration Details :[100]
+Epoc :1000
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 42.9261226460647
+Learning Rate :0.003
+Test Accuracy 43.45726702076292
+Learning Rate :0.005
+Test Accuracy 43.215837759536456
+Learning Rate :0.007
+Test Accuracy 42.636407532592955
+Learning Rate :0.009
+Test Accuracy 43.36069531627233
+Learning Rate :0.01
+Test Accuracy 43.11926605504588
+Learning Rate :0.03
+Test Accuracy 43.36069531627233
+Learning Rate :0.05
+Test Accuracy 43.022694350555284
+Learning Rate :0.07
+Test Accuracy 44.37469821342347
+Learning Rate :0.09
+Test Accuracy 43.650410429744085
+Configuration Details :[60]
+Epoc :1000
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 44.27812650893288
+Learning Rate :0.003
+Test Accuracy 43.26412361178175
+Learning Rate :0.005
+Test Accuracy 43.215837759536456
+Learning Rate :0.007
+Test Accuracy 42.588121680347655
+Learning Rate :0.009
+Test Accuracy 43.36069531627233
+Learning Rate :0.01
+Test Accuracy 43.5538387252535
+Learning Rate :0.03
+Test Accuracy 43.69869628198938
+Learning Rate :0.05
+Test Accuracy 44.37469821342347
+Learning Rate :0.07
+Test Accuracy 43.69869628198938
+Learning Rate :0.09
+Test Accuracy 43.60212457749879
+Configuration Details :[100, 50]
+Epoc :1000
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 44.37469821342347
+Learning Rate :0.003
+Test Accuracy 43.07098020280058
+Learning Rate :0.005
+Test Accuracy 44.95412844036697
+Learning Rate :0.007
+Test Accuracy 36.69724770642202
+Learning Rate :0.009
+Test Accuracy 36.69724770642202
+Learning Rate :0.01
+Test Accuracy 41.33268952197006
+Learning Rate :0.03
+Test Accuracy 41.33268952197006
+Learning Rate :0.05
+Test Accuracy 41.33268952197006
+Learning Rate :0.07
+Test Accuracy 21.970062771607918
+Learning Rate :0.09
+Test Accuracy 21.970062771607918
+Configuration Details :[60, 20]
+Epoc :1000
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 43.36069531627233
+Learning Rate :0.003
+Test Accuracy 43.69869628198938
+Learning Rate :0.005
+Test Accuracy 43.215837759536456
+Learning Rate :0.007
+Test Accuracy 45.3887011105746
+Learning Rate :0.009
+Test Accuracy 44.37469821342347
+Learning Rate :0.01
+Test Accuracy 43.26412361178175
+Learning Rate :0.03
+Test Accuracy 44.13326895219701
+Learning Rate :0.05
+Test Accuracy 41.0912602607436
+Learning Rate :0.07
+Test Accuracy 36.69724770642202
+Learning Rate :0.09
+Test Accuracy 21.970062771607918
+Configuration Details :[100, 50, 10]
+Epoc :1000
+batchsize :500
+Learning Rate :0.001
+Test Accuracy 36.69724770642202
+Learning Rate :0.003
+Test Accuracy 42.53983582810237
+Learning Rate :0.005
+Test Accuracy 36.69724770642202
+Learning Rate :0.007
+Test Accuracy 36.69724770642202
+Learning Rate :0.009
+Test Accuracy 36.69724770642202
+Learning Rate :0.01
+Test Accuracy 36.69724770642202
+Learning Rate :0.03
+Test Accuracy 41.33268952197006
+Learning Rate :0.05
+Test Accuracy 41.33268952197006
+Learning Rate :0.07
+Test Accuracy 21.970062771607918
+Learning Rate :0.09
+Test Accuracy 41.33268952197006
