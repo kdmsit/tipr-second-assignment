@@ -37,7 +37,7 @@ def initialize_parameters(layer):
     weights = []
     for i in range(len(layer) - 1):
         j = i + 1
-        weight = np.zeros(layer[i], layer[j])
+        weight = np.zeros((layer[i], layer[j]))
         weights.append(weight)
     return weights
 
