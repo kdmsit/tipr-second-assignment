@@ -192,7 +192,7 @@ if __name__ == '__main__':
         layer.insert(0, ipdim)
         # endregion
         # region Batch and Epoch Details
-        epoc = 50
+        epoc = 100
         batchsize = 500
         print("Epoc :", epoc)
         f.write("Epoc :"+ str(epoc))
