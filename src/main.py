@@ -232,6 +232,8 @@ if __name__ == '__main__':
         # endregion
         # endregion
     X_test = np.asarray(testdata, dtype=None, order=None)
+    print(np.shape(weights))
+    print(np.shape(X_test), np.shape(testlabel))
     accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
     print("Test Accuracy ",accuracyOfMyCode)
     f.write("Test Accuracy "+str(accuracyOfMyCode))
