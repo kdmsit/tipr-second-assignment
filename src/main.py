@@ -23,7 +23,8 @@ if __name__ == '__main__':
         trainfilepath=sys.argv[2]
         testfilepath = sys.argv[4]
         datasetname = sys.argv[6]
-        con=sys.argv[8].split(' ')
+        #con=sys.argv[8].split('')
+        con = sys.argv[8]
         print(con)
         x=[]
         con=con[1:-1]
