@@ -5,9 +5,11 @@ import kerasnn
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 import datetime
+import sys
 import datetime
 
 if __name__ == '__main__':
+
     #path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
     #datasetname="MNIST"
     #datasetname = "Cat-Dog"
