@@ -1,0 +1,12 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset MNIST
+Test Configuration [600]
+Test Accuracy 96.5952380952381
+Test Configuration [500]
+Test Accuracy 96.26190476190476
+Test Configuration [400]
+Test Accuracy 96.28571428571429
+Test Configuration [300]
+Test Accuracy 95.71428571428572
+Test Configuration [100]
+Test Accuracy 94.30952380952381
