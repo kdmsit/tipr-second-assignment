@@ -70,6 +70,7 @@ if __name__ == '__main__':
                 for j in range(0, len(imlist)):
                     imagePixelListTest.append(imlist[j])
                     imageLabelListTest.append(i)
+            print(np.shape(imageLabelListTest), np.shape(imageLabelListTest))
             testdata = imagePixelListTest
             testlabel = imageLabelListTest
             print(np.shape(testdata), np.shape(testlabel))
