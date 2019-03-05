@@ -10,7 +10,6 @@ import datetime
 import sys
 if __name__ == '__main__':
     data = sys.argv[1]
-    print(data)
     mode = 0
     if (data == "--test-data"):
         mode = 0 #simply test
