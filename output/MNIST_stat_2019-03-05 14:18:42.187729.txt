@@ -1,0 +1,9 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset MNIST (tanh)
+Configuration Details :[400]
+Epoc :50
+batchsize :500
+Learning Rate :0.004
+Test Accuracy 10.476190476190476
+Test F1 Score(Macro) 0.01896551724137931
+Test F1 Score(Micro) 0.10476190476190476

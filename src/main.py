@@ -7,17 +7,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 import datetime
 if __name__ == '__main__':
-    #path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
-    #datasetname="MNIST"
-    datasetname = "Cat-Dog"
+    datasetname="MNIST"
+    #datasetname = "Cat-Dog"
     outputpath = "../output/"
-    outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
-    f = open(outputFileName, "w")
+    outputFileName = datasetname+"_normal_stat_" + str(datetime.datetime.now()) + ".txt"
+    f = open(outputpath + outputFileName, "w")
     Message="Welcome to the world of neural networks!"
     print(Message)
     f.write(Message)
     f.write("\n")
-    Message="This MultiLayer Neural Network for Dataset "+datasetname+" (tanh)"
+    Message="This MultiLayer Neural Network for Dataset "+datasetname
     print(Message)
     f.write(Message)
     f.write("\n")
@@ -27,9 +26,9 @@ if __name__ == '__main__':
     imageLabelListTest = []
     if(datasetname=="MNIST"):
         for i in range(0, 10):
-            inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
+            inputPath = "../data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
-            for file in glob.glob(path + inputPath):
+            for file in glob.glob(inputPath):
                 imagepix = []
                 im = Image.open(file)
                 imlist.append(list(im.getdata()))
@@ -63,12 +62,12 @@ if __name__ == '__main__':
     print(len(testdata))
     model={},
     weights={}
-    configList = [[100,50]]
+    configList = [[400]]
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.003]
+        learning_rate_list = [0.004]  # MNIST
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
@@ -82,7 +81,7 @@ if __name__ == '__main__':
         layer.append(opdim)
         layer.insert(0, ipdim)
         # endregion
-        epoc = 50
+        epoc = 1000
         batchsize = 500
         print("Epoc :", epoc)
         f.write("Epoc :"+ str(epoc))

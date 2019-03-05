@@ -1,0 +1,9 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset MNIST
+Configuration Details :[400]
+Epoc :50
+batchsize :500
+Learning Rate :0.004
+Test Accuracy 28.809523809523807
+Test F1 Score(Macro) 0.19749847443442978
+Test F1 Score(Micro) 0.28809523809523807
