@@ -193,8 +193,6 @@ if __name__ == '__main__':
             # endregion
             learningrate=0.003
             opdim = 2
-        print(len(traindata))
-        print(len(testdata))
         model={},
         config = configuration
         print("Configuration Details :",str(config))
