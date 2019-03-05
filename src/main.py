@@ -70,9 +70,9 @@ if __name__ == '__main__':
                 for j in range(0, len(imlist)):
                     imagePixelListTest.append(imlist[j])
                     imageLabelListTest.append(i)
-            print(np.shape(testdata),np.shape(testlabel))
             testdata = imagePixelListTest
             testlabel = imageLabelListTest
+            print(np.shape(testdata), np.shape(testlabel))
             # endregion
             f1 = open('../Pickel/mnist.pkl', 'rb')
             weights = pickle.load(f1)
@@ -104,6 +104,19 @@ if __name__ == '__main__':
             weights = pickle.load(f1)
             print(np.shape(weights))
             f1.close()
+        X_test = np.asarray(testdata, dtype=None, order=None)
+        print(np.shape(weights))
+        print(np.shape(X_test), np.shape(testlabel))
+        accuracyOfMyCode, f1_score_macro, f1_score_micro = nn.predict(X_test, testlabel, weights)
+        print("Test Accuracy ", accuracyOfMyCode)
+        f.write("Test Accuracy " + str(accuracyOfMyCode))
+        f.write("\n")
+        print("Test F1 Score(Macro) ", f1_score_macro)
+        f.write("Test F1 Score(Macro) " + str(f1_score_macro))
+        f.write("\n")
+        print("Test F1 Score(Micro) ", f1_score_micro)
+        f.write("Test F1 Score(Micro) " + str(f1_score_micro))
+        f.write("\n")
         # endregion
     elif (mode == 1):
         # region Train and Test
@@ -239,17 +252,17 @@ if __name__ == '__main__':
                 batchendIndex=batchstartIndex+batchsize
         # endregion
         # endregion
-    X_test = np.asarray(testdata, dtype=None, order=None)
-    print(np.shape(weights))
-    print(np.shape(X_test), np.shape(testlabel))
-    accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
-    print("Test Accuracy ",accuracyOfMyCode)
-    f.write("Test Accuracy "+str(accuracyOfMyCode))
-    f.write("\n")
-    print("Test F1 Score(Macro) ", f1_score_macro)
-    f.write("Test F1 Score(Macro) " + str(f1_score_macro))
-    f.write("\n")
-    print("Test F1 Score(Micro) ", f1_score_micro)
-    f.write("Test F1 Score(Micro) " + str(f1_score_micro))
-    f.write("\n")
+        X_test = np.asarray(testdata, dtype=None, order=None)
+        print(np.shape(weights))
+        print(np.shape(X_test), np.shape(testlabel))
+        accuracyOfMyCode, f1_score_macro, f1_score_micro=nn.predict(X_test,testlabel,weights)
+        print("Test Accuracy ",accuracyOfMyCode)
+        f.write("Test Accuracy "+str(accuracyOfMyCode))
+        f.write("\n")
+        print("Test F1 Score(Macro) ", f1_score_macro)
+        f.write("Test F1 Score(Macro) " + str(f1_score_macro))
+        f.write("\n")
+        print("Test F1 Score(Micro) ", f1_score_micro)
+        f.write("Test F1 Score(Micro) " + str(f1_score_micro))
+        f.write("\n")
     f.close()
