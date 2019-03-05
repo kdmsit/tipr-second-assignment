@@ -90,7 +90,7 @@ if __name__ == '__main__':
         # region Train and Test
         learningrate=0
         opdim = 0
-        if(datasetname=="MNIST"):
+        if(datasetname.upper()=="MNIST"):
             # region Train Data
             for i in range(0, 10):
                 traininputPath = trainfilepath+"/" + str(i) + "/*jpg"
@@ -122,7 +122,7 @@ if __name__ == '__main__':
             # endregion
             learningrate=0.004
             opdim = 10
-        elif(datasetname=="Cat-Dog"):
+        elif(datasetname.upper()=="CAT-DOG"):
             dirlist=['cat','dog']
             # region Train Data
             for i in dirlist:
