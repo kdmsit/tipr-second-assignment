@@ -13,18 +13,6 @@ def sigmoid_derivative(x):
     return sigmoid(x) * (1.0 - sigmoid(x))
 # endregion
 
-def tanh(x):
-    return (1.0 - np.exp(-2*x))/(1.0 + np.exp(-2*x))
-
-def tanh_derivative(x):
-    return (1 + tanh(x))*(1 - tanh(x))
-
-def relu(z):
-    return np.maximum(z, 0)
-
-def relu_derivative(z):
-    return 1. * (z > 0)
-
 def softmax(z):
     return np.exp(z) / np.sum(np.exp(z))
 
@@ -81,7 +69,6 @@ def back_prop(layerout, Z,Y, weights, learning_rate):
         weights[i] += learning_rate * dweights[i]
     return weights
 
-#def compute_cost(model,X,y,reg_lambda):
 
 def train(model, X, Y,weights,learning_rate):
     layerout, Z = forward_prop(X,weights)
