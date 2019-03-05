@@ -72,11 +72,9 @@ if __name__ == '__main__':
                     imageLabelListTest.append(i)
             testdata = imagePixelListTest
             testlabel = imageLabelListTest
-            print(np.shape(testdata), np.shape(testlabel))
             # endregion
             f1 = open('../Pickel/mnist.pkl', 'rb')
             weights = pickle.load(f1)
-            print(np.shape(weights))
             f1.close()
         elif (datasetname.upper() == "CAT-DOG"):
             dirlist = ['cat', 'dog']
@@ -105,8 +103,6 @@ if __name__ == '__main__':
             print(np.shape(weights))
             f1.close()
         X_test = np.asarray(testdata, dtype=None, order=None)
-        print(np.shape(weights))
-        print(np.shape(X_test), np.shape(testlabel))
         accuracyOfMyCode, f1_score_macro, f1_score_micro = nn.predict(X_test, testlabel, weights)
         print("Test Accuracy ", accuracyOfMyCode)
         f.write("Test Accuracy " + str(accuracyOfMyCode))
