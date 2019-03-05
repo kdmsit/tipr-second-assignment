@@ -24,6 +24,7 @@ if __name__ == '__main__':
         testfilepath = sys.argv[4]
         datasetname = sys.argv[6]
         con=sys.argv[8].split(' ')
+        print(con)
         x=[]
         #con=con[1:-1]
         for k in con:
