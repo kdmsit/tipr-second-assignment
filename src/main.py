@@ -83,7 +83,7 @@ if __name__ == '__main__':
                         imageLabelListTest.append(0)
                     if (i == 'dog'):
                         imageLabelListTest.append(1)
-            pca = PCA(n_components=500).fit(imagePixelListTest)
+            pca = PCA(n_components=1000).fit(imagePixelListTest)
             reducedimagePixelList = pca.transform(imagePixelListTest)
             testdata = reducedimagePixelList
             testlabel = imageLabelListTest
@@ -147,7 +147,7 @@ if __name__ == '__main__':
                         imageLabelList.append(0)
                     if (i == 'dog'):
                         imageLabelList.append(1)
-            pca = PCA(n_components=500).fit(imagePixelList)
+            pca = PCA(n_components=1000).fit(imagePixelList)
             reducedimagePixelList = pca.transform(imagePixelList)
             traindata = reducedimagePixelList
             trainlabel = imageLabelList
@@ -168,7 +168,7 @@ if __name__ == '__main__':
                         imageLabelListTest.append(0)
                     if (i == 'dog'):
                         imageLabelListTest.append(1)
-            pca = PCA(n_components=500).fit(imagePixelListTest)
+            pca = PCA(n_components=1000).fit(imagePixelListTest)
             reducedimagePixelListtest = pca.transform(imagePixelListTest)
             testdata = reducedimagePixelListtest
             testlabel = imageLabelListTest
