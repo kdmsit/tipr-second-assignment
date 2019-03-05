@@ -57,7 +57,7 @@ if __name__ == '__main__':
     weights = {}
     if (mode == 0):
         # region Only Test
-        if (datasetname == "MNIST"):
+        if (datasetname.upper() == "MNIST"):
             # region test Data
             for i in range(0, 10):
                 testinputPath = testfilepath + "/" + str(i) + "/*jpg"
@@ -80,7 +80,7 @@ if __name__ == '__main__':
             weights = pickle.load(f1)
             print(np.shape(weights))
             f1.close()
-        elif (datasetname == "Cat-Dog"):
+        elif (datasetname.upper() == "CAT-DOG"):
             dirlist = ['cat', 'dog']
             # region Test Data
             for i in dirlist:
