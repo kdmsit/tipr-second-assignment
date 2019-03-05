@@ -61,6 +61,7 @@ if __name__ == '__main__':
             # region test Data
             for i in range(0, 10):
                 testinputPath = testfilepath + "/" + str(i) + "/*jpg"
+                print(testinputPath)
                 imlist = []
                 for file in glob.glob(testinputPath):
                     imagepix = []
