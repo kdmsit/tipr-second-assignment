@@ -28,7 +28,7 @@ if __name__ == '__main__':
         con=con[1:-1]
         for k in con:
             x.append(k)
-        configuration=k
+        configuration=x
         print(configuration)
     outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
