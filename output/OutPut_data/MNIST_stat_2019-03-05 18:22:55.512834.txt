@@ -1,0 +1,5 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset MNIST
+Test Accuracy 89.38095238095238
+Test F1 Score(Macro) 0.8914750184437648
+Test F1 Score(Micro) 0.8938095238095238

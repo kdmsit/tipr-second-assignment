@@ -4,6 +4,6 @@ Configuration Details :[400]
 Epoc :50
 batchsize :500
 Learning Rate :0.004
-Test Accuracy 89.66666666666666
-Test F1 Score(Macro) 0.8951231382771532
-Test F1 Score(Micro) 0.8966666666666666
+Test Accuracy 88.04761904761905
+Test F1 Score(Macro) 0.8779415684740768
+Test F1 Score(Micro) 0.8804761904761905
