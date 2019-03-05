@@ -60,8 +60,8 @@ if __name__ == '__main__':
                 for j in range(0, len(imlist)):
                     imagePixelListTest.append(imlist[j])
                     imageLabelListTest.append(i)
-                testdata = imagePixelListTest
-                testlabel = imageLabelListTest
+            testdata = imagePixelListTest
+            testlabel = imageLabelListTest
             # endregion
             f1 = open('../Pickel/mnist.pkl', 'rb')
             weights = pickle.load(f1)
