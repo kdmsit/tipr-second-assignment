@@ -61,7 +61,6 @@ if __name__ == '__main__':
             # region test Data
             for i in range(0, 10):
                 testinputPath = testfilepath + "/" + str(i) + "/*jpg"
-                print(testinputPath)
                 imlist = []
                 for file in glob.glob(testinputPath):
                     imagepix = []
@@ -71,7 +70,6 @@ if __name__ == '__main__':
                 for j in range(0, len(imlist)):
                     imagePixelListTest.append(imlist[j])
                     imageLabelListTest.append(i)
-            print(np.shape(imageLabelListTest), np.shape(imageLabelListTest))
             testdata = imagePixelListTest
             testlabel = imageLabelListTest
             print(np.shape(testdata), np.shape(testlabel))
