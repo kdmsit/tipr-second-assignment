@@ -25,11 +25,12 @@ if __name__ == '__main__':
         datasetname = sys.argv[6]
         con=sys.argv[8].split(' ')
         x=[]
-        con=con[1:-1]
+        #con=con[1:-1]
         for k in con:
             x.append(k)
         configuration=x
         print(configuration)
+        print(type(configuration))
     outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(outputpath + outputFileName, "w")
