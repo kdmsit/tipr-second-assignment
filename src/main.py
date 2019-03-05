@@ -19,11 +19,17 @@ if __name__ == '__main__':
         testfilepath = sys.argv[2]
         datasetname = sys.argv[4]
     elif (mode == 1):
+        configuration =[]
         trainfilepath=sys.argv[2]
         testfilepath = sys.argv[4]
         datasetname = sys.argv[6]
-        configuration= sys.argv[8]
-        print(type(configuration))
+        con=sys.argv[8].split(' ')
+        x=[]
+        con=con[1:-1]
+        for k in con:
+            x.append(k)
+        configuration=k
+        print(configuration)
     outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(outputpath + outputFileName, "w")
