@@ -1,0 +1,9 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network Script Test for Dataset mnist
+Configuration Details :[]
+Epoc :100
+batchsize :500
+Learning Rate :0.004
+Test Accuracy 69.43571428571428
+Test F1 Score(Macro) 0.6867340987827664
+Test F1 Score(Micro) 0.6943571428571429

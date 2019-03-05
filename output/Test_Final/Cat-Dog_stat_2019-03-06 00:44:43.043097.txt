@@ -1,0 +1,5 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network Script Test for Dataset Cat-Dog
+Test Accuracy 57.812
+Test F1 Score(Macro) 0.578116786262431
+Test F1 Score(Micro) 0.57812

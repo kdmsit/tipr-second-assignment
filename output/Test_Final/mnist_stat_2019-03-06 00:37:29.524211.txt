@@ -1,0 +1,2 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network Script Test for Dataset mnist

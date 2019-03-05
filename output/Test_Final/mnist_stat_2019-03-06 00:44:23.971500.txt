@@ -1,0 +1,5 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network Script Test for Dataset mnist
+Test Accuracy 89.8452380952381
+Test F1 Score(Macro) 0.8959321114257353
+Test F1 Score(Micro) 0.898452380952381
