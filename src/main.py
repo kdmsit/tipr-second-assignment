@@ -25,10 +25,11 @@ if __name__ == '__main__':
         datasetname = sys.argv[6]
         #con=sys.argv[8].split('')
         con = sys.argv[8]
-        print(con)
         x=[]
         con=con[1:-1]
+        x=con.split(',')
         print(con)
+        print(x)
         for k in con:
             x.append(k)
         configuration=x
