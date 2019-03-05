@@ -63,14 +63,12 @@ if __name__ == '__main__':
     print(len(testdata))
     model={},
     weights={}
-    configList = [[600],[500],[400],[300],[100]]
-    #configList = [[600,100],[600,50],[500,100],[500,50],[400,100],[400,50],[200,50],[100,20]]
-    #configList = [[600, 100, 20],[500, 100, 20],[600, 50, 20],[500, 50, 20],[200,50,20],[100,50,20]]
+    configList = [[400]]
     for config in configList:
         print("Configuration Details :",str(config))
         f.write("Configuration Details :" + str(config))
         f.write("\n")
-        learning_rate_list = [0.003,0.004,0.005]  # MNIST
+        learning_rate_list = [0.004]  # MNIST
         # region config Details
         #config = [600, 50]
         ipdim = len(traindata[0])
