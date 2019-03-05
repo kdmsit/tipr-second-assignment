@@ -45,6 +45,10 @@ if __name__ == '__main__':
     imageLabelList = []
     imagePixelListTest = []
     imageLabelListTest = []
+    traindata=[]
+    trainlabel=[]
+    testdata=[]
+    testlabel=[]
     weights = {}
     if (mode == 0):
         # region Only Test
