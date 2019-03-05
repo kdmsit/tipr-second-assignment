@@ -1,7 +1,7 @@
 import glob
 from PIL import Image
 import numpy as np
-from random import shuffle
+import pickle
 import nn
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
@@ -44,8 +44,6 @@ if __name__ == '__main__':
             inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
             for file in glob.glob(path + inputPath):
-            #for k in range(100):
-                #file=glob.glob(path + inputPath)[k]
                 imagepix = []
                 im = Image.open(file)
                 im = im.convert('1')
@@ -64,65 +62,66 @@ if __name__ == '__main__':
     model={},
     weights={}
 
-    configList = [[100,50]]
-    for config in configList:
-        print("Configuration Details :",str(config))
-        f.write("Configuration Details :" + str(config))
+    config=[100,50]
+    print("Configuration Details :",str(config))
+    f.write("Configuration Details :" + str(config))
+    f.write("\n")
+    learningrate=0.003
+    # region config Details
+    ipdim = len(traindata[0])
+    opdim = 0
+    if (datasetname == "MNIST"):
+        opdim = 10
+    elif (datasetname == "Cat-Dog"):
+        opdim = 2
+    hiddendim = config
+    layer = hiddendim
+    layer.append(opdim)
+    layer.insert(0, ipdim)
+    # endregion
+    epoc = 50
+    batchsize = 500
+    print("Epoc :", epoc)
+    f.write("Epoc :"+ str(epoc))
+    f.write("\n")
+    f.write("batchsize :"+ str(batchsize))
+    f.write("\n")
+    learning_rate = learningrate
+    print("Learning Rate :", learning_rate)
+    f.write("Learning Rate :"+str(learning_rate))
+    f.write("\n")
+    for k in range(epoc):
+        batchstartIndex=0
+        batchendIndex=batchstartIndex+batchsize
+        while(batchendIndex <= len(traindata)):
+            if (k == 0):
+                weights = nn.initialize_parameters(layer)
+            batchImagePixels=[]
+            batchImageLabels = []
+            batchImagePixels=[traindata[i] for i in range(batchstartIndex,batchendIndex)]
+            batchImageLabels = [trainlabel[i] for i in range(batchstartIndex, batchendIndex)]
+            X = np.asarray(batchImagePixels, dtype=None, order=None)
+            y = []
+            for i in range(len(batchImageLabels)):
+                labellist = [0 for i in range(opdim)]
+                labellist[int(batchImageLabels[i])] = 1
+                y.append(labellist)
+            Y = np.asarray(y, dtype=None, order=None)
+            weights = nn.train(model, X, Y, weights, learning_rate)
+            batchstartIndex=batchendIndex
+            batchendIndex=batchstartIndex+batchsize
+        f1 = open('../Pickel/catdog.pkl', 'wb')
+        pickle.dump(weights, f1)
+        f1.close()
+        X_test = np.asarray(testdata, dtype=None, order=None)
+        accuracyOfMyCode, f1_score_macro, f1_score_micro = nn.predict(X_test, testlabel, weights)
+        print("Test Accuracy ", accuracyOfMyCode)
+        f.write("Test Accuracy " + str(accuracyOfMyCode))
         f.write("\n")
-        learning_rate_list = [0.003]
-        # region config Details
-        ipdim = len(traindata[0])
-        opdim = 0
-        if (datasetname == "MNIST"):
-            opdim = 10
-        elif (datasetname == "Cat-Dog"):
-            opdim = 2
-        hiddendim = config
-        layer = hiddendim
-        layer.append(opdim)
-        layer.insert(0, ipdim)
-        # endregion
-        epoc = 50
-        batchsize = 500
-        print("Epoc :", epoc)
-        f.write("Epoc :"+ str(epoc))
+        print("Test F1 Score(Macro) ", f1_score_macro)
+        f.write("Test F1 Score(Macro) " + str(f1_score_macro))
         f.write("\n")
-        f.write("batchsize :"+ str(batchsize))
+        print("Test F1 Score(Micro) ", f1_score_micro)
+        f.write("Test F1 Score(Micro) " + str(f1_score_micro))
         f.write("\n")
-        for learningrate in learning_rate_list:
-            learning_rate = learningrate
-            print("Learning Rate :", learning_rate)
-            f.write("Learning Rate :"+str(learning_rate))
-            f.write("\n")
-            for k in range(epoc):
-                batchstartIndex=0
-                batchendIndex=batchstartIndex+batchsize
-                while(batchendIndex <= len(traindata)):
-                    if (k == 0):
-                        weights = nn.initialize_parameters(layer)
-                    batchImagePixels=[]
-                    batchImageLabels = []
-                    batchImagePixels=[traindata[i] for i in range(batchstartIndex,batchendIndex)]
-                    batchImageLabels = [trainlabel[i] for i in range(batchstartIndex, batchendIndex)]
-                    X = np.asarray(batchImagePixels, dtype=None, order=None)
-                    y = []
-                    for i in range(len(batchImageLabels)):
-                        labellist = [0 for i in range(opdim)]
-                        labellist[int(batchImageLabels[i])] = 1
-                        y.append(labellist)
-                    Y = np.asarray(y, dtype=None, order=None)
-                    weights = nn.train(model, X, Y, weights, learning_rate)
-                    batchstartIndex=batchendIndex
-                    batchendIndex=batchstartIndex+batchsize
-            X_test = np.asarray(testdata, dtype=None, order=None)
-            accuracyOfMyCode, f1_score_macro, f1_score_micro = nn.predict(X_test, testlabel, weights)
-            print("Test Accuracy ", accuracyOfMyCode)
-            f.write("Test Accuracy " + str(accuracyOfMyCode))
-            f.write("\n")
-            print("Test F1 Score(Macro) ", f1_score_macro)
-            f.write("Test F1 Score(Macro) " + str(f1_score_macro))
-            f.write("\n")
-            print("Test F1 Score(Micro) ", f1_score_micro)
-            f.write("Test F1 Score(Micro) " + str(f1_score_micro))
-            f.write("\n")
     f.close()

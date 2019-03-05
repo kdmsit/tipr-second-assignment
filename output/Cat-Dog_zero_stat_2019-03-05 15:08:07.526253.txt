@@ -1,0 +1,9 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Cat-Dog
+Configuration Details :[100, 50]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 48.08
+Test F1 Score(Macro) 0.324689357104268
+Test F1 Score(Micro) 0.4808

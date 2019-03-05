@@ -1,0 +1,9 @@
+Welcome to the world of neural networks!
+This MultiLayer Neural Network for Dataset Cat-Dog (tanh)
+Configuration Details :[100, 50]
+Epoc :50
+batchsize :500
+Learning Rate :0.003
+Test Accuracy 51.92
+Test F1 Score(Macro) 0.34175882043180617
+Test F1 Score(Micro) 0.5192

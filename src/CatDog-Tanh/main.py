@@ -7,12 +7,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
 import datetime
 if __name__ == '__main__':
-    path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
+    #path = "/home/kdcse/Documents/Second Semester/TIPR/Assignment-2/tipr-second-assignment"
     #datasetname="MNIST"
     datasetname = "Cat-Dog"
-    outputpath = "/output/"
+    outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
-    f = open(path + outputpath + outputFileName, "w")
+    f = open(outputFileName, "w")
     Message="Welcome to the world of neural networks!"
     print(Message)
     f.write(Message)
@@ -40,9 +40,9 @@ if __name__ == '__main__':
     elif(datasetname=="Cat-Dog"):
         dirlist=['cat','dog']
         for i in dirlist:
-            inputPath = "/data/"+datasetname+"/" + str(i) + "/*jpg"
+            inputPath = "../data/"+datasetname+"/" + str(i) + "/*jpg"
             imlist = []
-            for file in glob.glob(path + inputPath):
+            for file in glob.glob(inputPath):
             #for k in range(100):
                 #file=glob.glob(path + inputPath)[k]
                 imagepix = []
