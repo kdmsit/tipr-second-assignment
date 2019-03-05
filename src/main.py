@@ -90,6 +90,7 @@ if __name__ == '__main__':
             # endregion
             f1 = open('../Pickel/catdog.pkl', 'rb')
             weights = pickle.load(f1)
+            print(np.shape(weights))
             f1.close()
         # endregion
     elif (mode == 1):
