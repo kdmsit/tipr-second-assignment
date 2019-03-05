@@ -26,7 +26,8 @@ if __name__ == '__main__':
         con=sys.argv[8].split(' ')
         print(con)
         x=[]
-        #con=con[1:-1]
+        con=con[1:-1]
+        print(con)
         for k in con:
             x.append(k)
         configuration=x
