@@ -23,6 +23,7 @@ if __name__ == '__main__':
         testfilepath = sys.argv[4]
         datasetname = sys.argv[6]
         configuration= sys.argv[8]
+        print(configuration)
     outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(outputpath + outputFileName, "w")
@@ -89,6 +90,7 @@ if __name__ == '__main__':
         # region Train and Test
         learningrate=0
         opdim = 0
+        layer=[]
         if(datasetname.upper()=="MNIST"):
             # region Train Data
             for i in range(0, 10):
@@ -176,7 +178,7 @@ if __name__ == '__main__':
         # region config Details
         ipdim = len(traindata[0])
         hiddendim = config
-        layer = hiddendim
+        layer.append(hiddendim)
         layer.append(opdim)
         layer.insert(0, ipdim)
         # endregion
