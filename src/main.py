@@ -184,7 +184,9 @@ if __name__ == '__main__':
         # region config Details
         ipdim = len(traindata[0])
         hiddendim = config
-        layer.append(hiddendim)
+        for dim in hiddendim:
+            layer.append(dim)
+        #layer.append(hiddendim)
         layer.append(opdim)
         layer.insert(0, ipdim)
         # endregion
