@@ -22,8 +22,8 @@ if __name__ == '__main__':
         trainfilepath=sys.argv[2]
         testfilepath = sys.argv[4]
         datasetname = sys.argv[6]
-        configuration= list(sys.argv[8])
-        print(configuration)
+        configuration= sys.argv[8]
+        print(type(configuration))
     outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(outputpath + outputFileName, "w")
