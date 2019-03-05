@@ -79,7 +79,7 @@ if __name__ == '__main__':
                         imageLabelListTest.append(1)
             pca = PCA(n_components=500).fit(imagePixelListTest)
             reducedimagePixelList = pca.transform(imagePixelListTest)
-            testdata = imagePixelListTest
+            testdata = reducedimagePixelList
             testlabel = imageLabelListTest
             # endregion
             f1 = open('../Pickel/catdog.pkl', 'rb')
@@ -162,8 +162,8 @@ if __name__ == '__main__':
                     if (i == 'dog'):
                         imageLabelListTest.append(1)
             pca = PCA(n_components=500).fit(imagePixelListTest)
-            reducedimagePixelList = pca.transform(imagePixelListTest)
-            testdata = imagePixelListTest
+            reducedimagePixelListtest = pca.transform(imagePixelListTest)
+            testdata = reducedimagePixelListtest
             testlabel = imageLabelListTest
             # endregion
             learningrate=0.003
