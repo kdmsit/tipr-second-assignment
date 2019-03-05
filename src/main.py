@@ -60,15 +60,18 @@ if __name__ == '__main__':
                 for file in glob.glob(testinputPath):
                     imagepix = []
                     im = Image.open(file)
+                    im = im.convert('1')
                     imlist.append(list(im.getdata()))
                 for j in range(0, len(imlist)):
                     imagePixelListTest.append(imlist[j])
                     imageLabelListTest.append(i)
+            print(np.shape(testdata),np.shape(testlabel))
             testdata = imagePixelListTest
             testlabel = imageLabelListTest
             # endregion
             f1 = open('../Pickel/mnist.pkl', 'rb')
             weights = pickle.load(f1)
+            print(np.shape(weights))
             f1.close()
         elif (datasetname == "Cat-Dog"):
             dirlist = ['cat', 'dog']
