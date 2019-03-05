@@ -28,13 +28,10 @@ if __name__ == '__main__':
         x=[]
         con=con[1:-1]
         con=con.split(',')
-        print(con)
         x=[]
         for k in con:
             x.append(int(k))
         configuration=x
-        print(configuration)
-        print(type(configuration))
     outputpath = "../output/"
     outputFileName = datasetname+"_stat_" + str(datetime.datetime.now()) + ".txt"
     f = open(outputpath + outputFileName, "w")
