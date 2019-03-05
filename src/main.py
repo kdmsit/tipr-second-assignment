@@ -27,11 +27,11 @@ if __name__ == '__main__':
         con = sys.argv[8]
         x=[]
         con=con[1:-1]
-        x=con.split(',')
+        con=con.split(',')
         print(con)
-        print(x)
+        x=[]
         for k in con:
-            x.append(k)
+            x.append(int(k))
         configuration=x
         print(configuration)
         print(type(configuration))
